@@ -13,4 +13,4 @@ artifacts:
   files:
     - '**/*'
     - .ebextensions/**/*
-  base-directory: 'C:\codebuild\artifacts\_PublishedWebsites\${env:PROJECT}_Package\Archive\'
+  #base-directory: 'C:\codebuild\artifacts\_PublishedWebsites\${env:PROJECT}_Package\Archive\'
