@@ -20,6 +20,12 @@ namespace INTEX2
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            PopulateUserAndRoles();
+        }
+
+        public void PopulateUserAndRoles()
+        {
+            //populate users and roles and then we will assign roles to user
         }
 
         public IConfiguration Configuration { get; }
