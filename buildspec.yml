@@ -7,10 +7,9 @@ env:
 phases:
   build:
     commands:
-      - nuget restore
       - msbuild $env:PROJECT.csproj /p:TargetFrameworkVersion=v$env:DOTNET_FRAMEWORK /p:Configuration=Release /p:DeployIisAppPath="Default Web Site" /p:PackageAsSingleFile=false /p:OutDir=C:\codebuild\artifacts\ /t:Package
 artifacts:
   files:
     - '**/*'
     - .ebextensions/**/*
-  base-directory: 'C:\Users\willp\Source\Repos\INTEX2'
+  base-directory: '/bin'
