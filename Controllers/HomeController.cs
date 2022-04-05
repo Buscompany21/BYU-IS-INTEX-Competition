@@ -1,5 +1,6 @@
 ﻿using INTEX2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
-        private IntexDbContext _context { get; set; }
+        private ICrashesRepository _repo { get; set; }
 
-        public HomeController(IntexDbContext temp)
+        public HomeController(ICrashesRepository temp)
         {
-            _context = temp;
+            _repo = temp;
         }
 
         public IActionResult Index()
@@ -25,8 +26,9 @@ namespace INTEX2.Controllers
 
         public IActionResult DataSummary()
         {
-            var blah = _context.crash_data.ToList();
-            return View(blah);
+            var yeet = _repo.Crashes
+                .Take(5);
+            return View(yeet);
         }
 
         public IActionResult Privacy()

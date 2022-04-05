@@ -10,6 +10,6 @@ namespace INTEX2.Models
         public IntexDbContext(DbContextOptions<IntexDbContext> options) : base(options)
         {
         }
-        public DbSet<crash_data> crash_data { get; set; }
+        public DbSet<Crash> Crashes { get; set; }
     }
 }
