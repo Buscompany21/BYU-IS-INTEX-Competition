@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Data Summary";
+}
+
+@model List<Crash>
+
+<h1>Crash Data</h1>
+
+<ul>
+    @foreach (var c in Model)
+            {
+                <li>@c.CRASH_ID</li>
+            }
+
+</ul>

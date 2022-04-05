@@ -12,14 +12,16 @@ namespace INTEX2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IntexDbContext _context { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IntexDbContext temp)
         {
-            _logger = logger;
+            _context = temp;
         }
 
         public IActionResult Index()
         {
+            var blah = _context.Crashes.ToList();
             return View();
         }
 
