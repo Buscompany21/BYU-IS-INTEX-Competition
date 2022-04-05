@@ -2,7 +2,7 @@
     ViewData["Title"] = "Data Summary";
 }
 
-@model IQueryable<Crash>
+@model CrashesViewModel
 
 <h1>Crash Data</h1>
 
@@ -21,7 +21,7 @@
     </thead>
 
     <tbody>
-        @foreach (var c in Model)
+        @foreach (var c in Model.Crashes)
         {
             <tr>
                 <td>@c.CRASH_SEVERITY_ID</td>
@@ -38,3 +38,5 @@
         }
     </tbody>
 </table>
+
+<div page-model="@Model.PageInfo" page-action="DataSummary"></div>
