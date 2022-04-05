@@ -41,7 +41,7 @@ namespace INTEX2.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i <= PageModel.TotalPages; i++)
+            for (int i = PageModel.CurrentPage ; i <= PageModel.CurrentPage + 4; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
 
