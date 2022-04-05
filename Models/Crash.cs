@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace INTEX2.Models
 {
-    public class crash_data
+    public class Crash
     {
         [Key]
         public int CRASH_ID { get; set; }
