@@ -62,6 +62,12 @@ namespace INTEX2
 
             app.UseEndpoints(endpoints =>
             {
+
+            endpoints.MapControllerRoute(
+            name: "Paging",
+                    pattern: "Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "DataSummary" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
