@@ -11,7 +11,6 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private IntexDbContext _context { get; set; }
 
         public HomeController(IntexDbContext temp)
@@ -21,8 +20,13 @@ namespace INTEX2.Controllers
 
         public IActionResult Index()
         {
-            var blah = _context.Crashes.ToList();
             return View();
+        }
+
+        public IActionResult DataSummary()
+        {
+            var blah = _context.crash_data.ToList();
+            return View(blah);
         }
 
         public IActionResult Privacy()

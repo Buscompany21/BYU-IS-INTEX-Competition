@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace INTEX2.Models
 {
-    public class Crash
+    public class crash_data
     {
+        [Key]
         public int CRASH_ID { get; set; }
         public string CRASH_DATETIME { get; set; }
         public string ROUTE { get; set; }
@@ -21,10 +23,10 @@ namespace INTEX2.Models
         public string PEDESTRIAN_INVOLVED { get; set; }
         public string BICYCLIST_INVOLVED { get; set; }
         public string MOTORCYCLE_INVOLVED { get; set; }
-        public string IMPROPRER_RESTRAINT { get; set; }
+        public string IMPROPER_RESTRAINT { get; set; }
         public string UNRESTRAINED { get; set; }
         public string DUI { get; set; }
-        public string INERSECTION_RELATED { get; set; }
+        public string INTERSECTION_RELATED { get; set; }
         public string WILD_ANIMAL_RELATED { get; set; }
         public string DOMESTIC_ANIMAL_RELATED { get; set; }
         public string OVERTURN_ROLLOVER { get; set; }
