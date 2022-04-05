@@ -2,7 +2,7 @@
     ViewData["Title"] = "Data Summary";
 }
 
-@model IQueryable<Crash>
+@model CrashesViewModel
 
 <h1>Crash Data</h1>
 
@@ -21,7 +21,7 @@
     </thead>
 
     <tbody>
-        @foreach (var c in Model)
+        @foreach (var c in Model.Crashes)
         {
             <tr>
                 <td>@c.CRASH_SEVERITY_ID</td>
@@ -33,8 +33,13 @@
                 <td>@c.MILEPOINT</td>
                 <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
                 @*<td><a asp-controller="Home" asp-action="Edit" asp-route-BowlerID="@b.BowlerID">Edit</a></td>
-                <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>*@
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>*@
             </tr>
         }
     </tbody>
 </table>
+
+@*Pagination at the bottom of the page*@
+<div page-model="@Model.PageInfo" page-action="DataSummary" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+     class="btn-group pull-right m-1"></div>
