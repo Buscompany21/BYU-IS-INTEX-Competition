@@ -32,10 +32,21 @@ namespace INTEX2
                 options.UseMySql(Configuration["ConnectionStrings:IntexDbConnection"]);
             });
 
-            //Code to set up identity
-            //services.AddDefaultIdentity<IdentityUser>
-            //(options => options.SignIn.RequireConfirmedAccount = true)
-            //.AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseMySql(
+            //        Configuration.GetConnectionString("ConnectionStrings:ApplicationDbConnection")));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:ApplicationDbConnection"]);
+            });
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
