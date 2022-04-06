@@ -66,11 +66,22 @@ namespace INTEX2
 
             app.UseEndpoints(endpoints =>
             {
-
-            endpoints.MapControllerRoute(
-            name: "Paging",
-                    pattern: "Page{pageNum}",
+                endpoints.MapControllerRoute(
+                    name: "countypage",
+                    pattern: "{COUNTY_NAME}/Page{pageNum}",
                     defaults: new { Controller = "Home", action = "DataSummary" });
+
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1});
+
+                endpoints.MapControllerRoute(
+                    name: "county",
+                    pattern: "{COUNTY_NAME}",
+                    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
+
+                endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapControllerRoute(
                     name: "default",

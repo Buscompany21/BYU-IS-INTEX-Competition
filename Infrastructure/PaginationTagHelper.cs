@@ -40,10 +40,44 @@ namespace INTEX2.Infrastructure
             IUrlHelper uh = uhf.GetUrlHelper(vc);
 
             TagBuilder final = new TagBuilder("div");
-
-            for (int i = PageModel.CurrentPage ; i <= PageModel.CurrentPage + 4; i++)
+            if (PageModel.CurrentPage > 1)
             {
                 TagBuilder tb = new TagBuilder("a");
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = 1 });
+                if (PageClassesEnabled)
+                {
+                    tb.AddCssClass(PageClass);
+                    tb.AddCssClass(1 == PageModel.CurrentPage
+                        ? PageClassSelected : PageClassNormal);
+                }
+                tb.InnerHtml.Append(1.ToString());
+
+                final.InnerHtml.AppendHtml(tb);
+            }
+
+            if (PageModel.CurrentPage > 2)
+            {
+                TagBuilder tb = new TagBuilder("a");
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = PageModel.CurrentPage-1 });
+                if (PageClassesEnabled)
+                {
+                    tb.AddCssClass(PageClass);
+                    tb.AddCssClass(PageModel.CurrentPage-1 == PageModel.CurrentPage
+                        ? PageClassSelected : PageClassNormal);
+                }
+                tb.InnerHtml.Append((PageModel.CurrentPage-1).ToString());
+
+                final.InnerHtml.AppendHtml(tb);
+            }
+
+            for (int i = PageModel.CurrentPage ; i <= PageModel.TotalPages; i++)
+            {
+                TagBuilder tb = new TagBuilder("a");
+
+                if (i == PageModel.CurrentPage + 5)
+                {
+                    break;
+                }
 
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
 
@@ -55,6 +89,21 @@ namespace INTEX2.Infrastructure
                 }
 
                 tb.InnerHtml.Append(i.ToString());
+
+                final.InnerHtml.AppendHtml(tb);
+            }
+
+            if (PageModel.CurrentPage + 4 < PageModel.TotalPages)
+            {
+                TagBuilder tb = new TagBuilder("a");
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = PageModel.TotalPages });
+                if (PageClassesEnabled)
+                {
+                    tb.AddCssClass(PageClass);
+                    tb.AddCssClass(PageModel.TotalPages == PageModel.CurrentPage
+                        ? PageClassSelected : PageClassNormal);
+                }
+                tb.InnerHtml.Append((PageModel.TotalPages).ToString());
 
                 final.InnerHtml.AppendHtml(tb);
             }
