@@ -7,11 +7,11 @@ using INTEX2.Models;
 
 namespace INTEX2.Components
 {
-    public class CountyViewComponent : ViewComponent
+    public class SeverityViewComponent : ViewComponent
     {
         private ICrashesRepository repo { get; set; }
 
-        public CountyViewComponent (ICrashesRepository temp)
+        public SeverityViewComponent(ICrashesRepository temp)
         {
             repo = temp;
         }
@@ -20,16 +20,15 @@ namespace INTEX2.Components
         public IViewComponentResult Invoke()
         {
 
-            ViewBag.SelectedCounty = RouteData?.Values["COUNTY_NAME"];
+            ViewBag.SelectedSeverity = RouteData?.Values["CRASH_SEVERITY_ID"];
 
             var causes = repo.Crashes
-                .Where(x => x.COUNTY_NAME != "")
-                .Select(x => x.COUNTY_NAME)
+                .Where(x => x.CRASH_SEVERITY_ID != "")
+                .Select(x => x.CRASH_SEVERITY_ID)
                 .Distinct()
                 .OrderBy(x => x);
 
             return View(causes);
         }
-
     }
 }

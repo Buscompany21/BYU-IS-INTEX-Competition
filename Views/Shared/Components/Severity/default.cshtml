@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<string>
+
+<div class="d-grid gap-1">
+
+    <a asp-controller="Home" asp-action="DataSummary" asp-route-CRASH_SEVERITY_ID="" asp-route-pageNum="1"
+       class="btn btn-outline-secondary">Home</a>
+    @foreach (string severity in Model)
+    {
+        <a asp-controller="Home" asp-action="DataSummary" asp-route-CRASH_SEVERITY_ID="@severity" asp-route-pageNum="1"
+           class="btn @(ViewBag.SelectedSeverity == severity ? "btn-primary" : "btn-secondary")">@severity</a>
+    }
+</div>

@@ -68,13 +68,28 @@ namespace INTEX2
                     defaults: new { Controller = "Home", action = "DataSummary" });
 
                 endpoints.MapControllerRoute(
+                    name: "severitypage",
+                    pattern: "Page{pageNum}/Severity{CRASH_SEVERITY_ID}",
+                    defaults: new { Controller = "Home", action = "DataSummary", });
+
+                endpoints.MapControllerRoute(
+                    name: "severitypage",
+                    pattern: "Severity{CRASH_SEVERITY_ID}/Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "DataSummary", });
+
+                endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNum}",
                     defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1});
 
                 endpoints.MapControllerRoute(
                     name: "county",
-                    pattern: "{COUNTY_NAME}",
+                    pattern: "County{COUNTY_NAME}",
+                    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
+
+                endpoints.MapControllerRoute(
+                    name: "severity",
+                    pattern: "Severity{CRASH_SEVERITY_ID}",
                     defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();

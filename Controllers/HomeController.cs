@@ -25,7 +25,7 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult DataSummary(string COUNTY_NAME, int pageNum = 1)
+        public IActionResult DataSummary(string CRASH_SEVERITY_ID, string COUNTY_NAME, int pageNum = 1)
         {
 
             int pageSize = 50;
@@ -33,6 +33,7 @@ namespace INTEX2.Controllers
             var yeet = new CrashesViewModel
             {
                 Crashes = _repo.Crashes
+                .Where(p => p.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null)
                 .Where(p => p.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
@@ -40,9 +41,11 @@ namespace INTEX2.Controllers
                 PageInfo = new PageInfo
                 {
                     TotalNumCrashes = 
-                        (COUNTY_NAME == null 
+                        (COUNTY_NAME == null & CRASH_SEVERITY_ID == null
                             ? _repo.Crashes.Count() 
-                            : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME).Count()),
+                            : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
+                            .Where(x => x.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null).Count()),
+
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
                 }
