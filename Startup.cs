@@ -35,9 +35,9 @@ namespace INTEX2
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //services.AddSingleton<InferenceSession>(
-            //new InferenceSession("best_clf_model.onxx")
-            //);
+            services.AddSingleton<InferenceSession>(
+            new InferenceSession("Models/best_clf_model.onxx")
+            );
 
             services.AddScoped<ICrashesRepository, EFCrashesRepository>();
         }

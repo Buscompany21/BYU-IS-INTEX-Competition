@@ -14,14 +14,14 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
-        //private InferenceSession _session { get; set; }
-        
+        private InferenceSession _session { get; set; }
+
         private ICrashesRepository _repo { get; set; }
 
-        public HomeController(ICrashesRepository temp)
+        public HomeController(ICrashesRepository temp, InferenceSession session)
         {
             _repo = temp;
-            //_session = session;
+            _session = session;
         }
 
         public IActionResult Index()
