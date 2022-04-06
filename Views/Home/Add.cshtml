@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model INTEX2.Models.Crash 
+<h1>Crash</h1>
+
+<div>
+    <p>Enter in your Movie Collection!</p>
+
+    <br />
+    @*creates a form for user to enter information that will hook up to the database*@
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <label>City</label>
+    <select asp-for="CITY">
+        <option disabled selected value=""> -- select an option -- </option>
+        @foreach (Crash c in ViewBag.CITY)
+        {
+            <option value="@c.CITY">@c.CITY</option>
+        }
+    </select>
+    <label>County</label>
+    <select asp-for="COUNTY_NAME">
+        <option disabled selected value=""> -- select an option -- </option>
+        @foreach (Crash c in ViewBag.COUNTY_NAME)
+        {
+            <option value="@c.COUNTY_NAME">@c.COUNTY_NAME</option>
+        }
+    </select>
+    <br />
+    <label>Title</label>
+    <input asp-for="MovieName" />
+    <br />
+    <label>Year</label>
+    <input asp-for="Year" />
+    <br />
+    <label>Rating</label>
+    <select asp-for="Rating">
+        <option disabled selected value=""> -- select an option -- </option>
+        <option value="G">G</option>
+        <option value="PG">PG</option>
+        <option value="PG-13">PG-13</option>
+        <option value="R">R</option>
+    </select>
+    <br />
+    <label>Director</label>
+    <input asp-for="Director" />
+    <br />
+    <label>Edited</label>
+    <select asp-for="Edited">
+        <option disabled selected value=""> -- </option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <label>Lent To?</label>
+    <input asp-for="LentTo" />
+    <br />
+    <label>Notes</label>
+    <input asp-for="Notes" maxlength="25" />
+    <br />
+
+    <button type="submit">Submit Movie</button>
+
+
+</form>
+</div>

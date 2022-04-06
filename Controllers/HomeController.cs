@@ -300,5 +300,11 @@ namespace INTEX2.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.CITY = 
+        }
     }
 }
