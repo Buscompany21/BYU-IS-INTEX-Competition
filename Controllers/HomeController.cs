@@ -254,7 +254,9 @@ namespace INTEX2.Controllers
                 }
             }
 
-            
+            _session.Run(dui, teens, restraint, old, distracted, drowsy, Beaver, BoxElder, Cache, Carbon, Daggett, Davis, Duchesne, Emery, Garfield, Grand, Iron, Juab, Kane, Millard, Morgan, Piute, Rich, SaltLake, SanJuan, Sanpete, Sevier, Summit, Tooele, Uintah, Utah, Wasatch, Washington, Wayne, Weber);
+
+
             return View();
         }
     }
