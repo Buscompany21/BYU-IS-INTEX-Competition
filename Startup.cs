@@ -1,3 +1,4 @@
+using INTEX2.Data;
 using INTEX2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,8 +34,22 @@ namespace INTEX2
                 options.UseMySql(Configuration["ConnectionStrings:IntexDbConnection"]);
             });
 
+            //Uncomment this in just a moment
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:ApplicationDbConnection"]);
+            });
+
+            //services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            //.AddEntityFrameworkStores<ApplicationDbContext>()
+            //.AddDefaultTokenProviders();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSingleton<InferenceSession>(
+            new InferenceSession("Models/best_clf_model.onnx")
+            );
 
             services.AddScoped<ICrashesRepository, EFCrashesRepository>();
         }
