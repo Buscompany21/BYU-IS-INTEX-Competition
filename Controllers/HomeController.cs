@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,97 +15,14 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
+        public List<String> Counties { get; set; }
         private InferenceSession _session { get; set; }
 
         private ICrashesRepository _repo { get; set; }
 
-        public HomeController(ICrashesRepository temp, InferenceSession session)
+        public List<string> GetCounties()
         {
-            _repo = temp;
-            _session = session;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult DataSummary(string COUNTY_NAME, int pageNum = 1)
-        {
-
-            int pageSize = 50;
-
-            var yeet = new CrashesViewModel
-            {
-                Crashes = _repo.Crashes
-                .Where(p => p.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
-
-                PageInfo = new PageInfo
-                {
-                    TotalNumCrashes = 
-                        (COUNTY_NAME == null 
-                            ? _repo.Crashes.Count() 
-                            : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME).Count()),
-                    CrashesPerPage = pageSize,
-                    CurrentPage = pageNum
-                }
-            };
-
-            return View(yeet);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-        [HttpGet]
-        public IActionResult Predict()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Predict(long dui, long teens, long restraint, long old, long distracted, long drowsy, long night, string myCounty)
-        {
-
-            long Beaver = 0;
-            long BoxElder = 0;
-            long Cache = 0;
-            long Carbon = 0;
-            long Daggett = 0;
-            long Davis = 0;
-            long Duchesne = 0;
-            long Emery = 0;
-            long Garfield = 0;
-            long Grand = 0;
-            long Iron = 0;
-            long Juab = 0;
-            long Kane = 0;
-            long Millard = 0;
-            long Morgan = 0;
-            long Piute = 0;
-            long Rich = 0;
-            long SaltLake = 0;
-            long SanJuan = 0;
-            long Sanpete = 0;
-            long Sevier = 0;
-            long Summit = 0;
-            long Tooele = 0;
-            long Uintah = 0;
-            long Utah = 0;
-            long Wasatch = 0;
-            long Washington = 0;
-            long Wayne = 0;
-            long Weber = 0;
-
-            List<String> Counties = new List<String>();
+            List<string> Counties = new List<String>();
             Counties.Add("Beaver");
             Counties.Add("BoxElder");
             Counties.Add("Cache");
@@ -134,6 +52,96 @@ namespace INTEX2.Controllers
             Counties.Add("Washington");
             Counties.Add("Wayne");
             Counties.Add("Weber");
+            return Counties;
+        }
+        public HomeController(ICrashesRepository temp, InferenceSession session)
+        {
+            _repo = temp;
+            _session = session;
+            Counties = GetCounties();
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult DataSummary(string CRASH_SEVERITY_ID, string COUNTY_NAME, int pageNum = 1)
+        {
+
+            int pageSize = 50;
+
+            var yeet = new CrashesViewModel
+            {
+                Crashes = _repo.Crashes
+                .Where(p => p.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null)
+                .Where(p => p.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumCrashes = 
+                        (COUNTY_NAME == null & CRASH_SEVERITY_ID == null
+                            ? _repo.Crashes.Count() 
+                            : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
+                            .Where(x => x.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null).Count()),
+
+                    CrashesPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+            return View(yeet);
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        /*[HttpGet]
+        public IActionResult Predict()
+        {
+            return View();
+        }*/
+        [HttpGet]
+        public IActionResult Predict(int crashId, long dui, long teens, long restraint, long old, long distracted, long drowsy, long night, string myCounty)
+        {
+            long Beaver = 0;
+            long BoxElder = 0;
+            long Cache = 0;
+            long Carbon = 0;
+            long Daggett = 0;
+            long Davis = 0;
+            long Duchesne = 0;
+            long Emery = 0;
+            long Garfield = 0;
+            long Grand = 0;
+            long Iron = 0;
+            long Juab = 0;
+            long Kane = 0;
+            long Millard = 0;
+            long Morgan = 0;
+            long Piute = 0;
+            long Rich = 0;
+            long SaltLake = 0;
+            long SanJuan = 0;
+            long Sanpete = 0;
+            long Sevier = 0;
+            long Summit = 0;
+            long Tooele = 0;
+            long Uintah = 0;
+            long Utah = 0;
+            long Wasatch = 0;
+            long Washington = 0;
+            long Wayne = 0;
+            long Weber = 0;           
             foreach (string county in Counties)
             {
                 if(myCounty == "Beaver")
@@ -297,8 +305,12 @@ namespace INTEX2.Controllers
                 NamedOnnxValue.CreateFromTensor("int_input", data.AsTensor())
             });
 
+            Tensor<string> score = result.First().AsTensor<string>();
+            var predictionResult = new PredictionResult { CrashSeverityId = score.First() };
+            ViewBag.Result = predictionResult.CrashSeverityId;
+            Crash Crash = _repo.Crashes.Single(p => p.CRASH_ID == crashId);
 
-            return View();
+            return View(Crash);
         }
 
         [HttpGet]
