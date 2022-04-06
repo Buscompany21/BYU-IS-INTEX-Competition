@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,9 @@ namespace INTEX2
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSingleton<InferenceSession>(
+            new InferenceSession("Models/best_clf_model.onnx")
+            );
 
             services.AddScoped<ICrashesRepository, EFCrashesRepository>();
         }

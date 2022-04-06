@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <form method="post">
+        <label for="county"></label>
+        <select>
+            <option value="Beaver">Beaver</option>
+            <option value="BoxElder">BoxElder</option>
+            <option value="Cache">Cache</option>
+            <option value="Carbon">Carbon</option>
+            <option value="Daggett">Daggett</option>
+            <option value="Davis">Davis</option>
+            <option value="Duchesne">Duchesne</option>
+            <option value="Emery">Emery</option>
+            <option value="Garfield">Garfield</option>
+            <option value="Grand">Grand</option>
+            <option value="Iron">Iron</option>
+            <option value="Juab">Juab</option>
+            <option value="Kane">Kane</option>
+            <option value="Millard">Millard</option>
+            <option value="Morgan">Morgan</option>
+            <option value="Piute">Piute</option>
+            <option value="Rich">Rich</option>
+            <option value="SaltLake">SaltLake</option>
+            <option value="SanJuan">SanJuan</option>
+            <option value="Sanpete">Sanpete</option>
+            <option value="Sevier">Sevier</option>
+            <option value="Summit">Summit</option>
+            <option value="Tooele">Tooele</option>
+            <option value="Uintah">Uintah</option>
+            <option value="Utah">Utah</option>
+            <option value="Wasatch">Wasatch</option>
+            <option value="Washington">Washington</option>
+            <option value="Wayne">Wayne</option>
+            <option value="Weber">Weber</option>
+        </select>
+        <label for="dui">DUI?</label>
+        <select name="dui">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+        <br />
+        <label for="teens">Teen Driver?</label>
+        <select name="teens">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+        <br />
+        <label for="restraint">Restraints Used?</label>
+        <select name="restraint">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+        <br />
+        <label for="old">Driver 55+?</label>
+        <select name="old">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+        <br />
+        <label for="distracted">Distracted Driver?</label>
+        <select name="distracted">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+        <br />
+        <label for="drowsy">Drowsy Driver?</label>
+        <select name="drowsy">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+        <label for="night">Night Time?</label>
+        <select name="night">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+
+
+        <button asp-action="Predict" type="submit">Save</button>
+    </form>
+</div>
