@@ -26,13 +26,11 @@ namespace INTEX2.Models
         public long Garfield { get; set; }
         public long Grand { get; set; }
         public long Iron { get; set; }
-
         public long Juab { get; set; }
         public long Kane { get; set; }
         public long Millard { get; set; }
         public long Morgan { get; set; }
         public long Piute { get; set; }
-
         public long Rich { get; set; }
         public long SaltLake { get; set; }
         public long SanJuan { get; set; }
@@ -46,7 +44,6 @@ namespace INTEX2.Models
         public long Washington { get; set; }
         public long Wayne { get; set; }
         public long Weber { get; set; }
-
         public Tensor<long> AsTensor()
         {
             long[] data = new long[]
