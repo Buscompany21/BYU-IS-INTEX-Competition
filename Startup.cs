@@ -1,3 +1,4 @@
+using INTEX2.Data;
 using INTEX2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,17 @@ namespace INTEX2
             {
                 options.UseMySql(Configuration["ConnectionStrings:IntexDbConnection"]);
             });
+
+            //Uncomment this in just a moment
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:ApplicationDbConnection"]);
+            });
+
+            //services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            //.AddEntityFrameworkStores<ApplicationDbContext>()
+            //.AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
