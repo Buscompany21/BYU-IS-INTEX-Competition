@@ -24,6 +24,7 @@
                     <td>Route</td>
                     <td>Milepoint</td>
                     <td>Coordinates</td>
+                    <td></td>
                 </tr>
             </thead>
 
@@ -39,6 +40,7 @@
                         <td>@c.ROUTE</td>
                         <td>@c.MILEPOINT</td>
                         <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
+                        <td><a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")">View Details</a></td>
                         @*<td><a asp-controller="Home" asp-action="Edit" asp-route-BowlerID="@b.BowlerID">Edit</a></td>
                             <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>*@
                     </tr>

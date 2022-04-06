@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,14 +15,50 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
+        public List<String> Counties { get; set; }
         private InferenceSession _session { get; set; }
 
         private ICrashesRepository _repo { get; set; }
 
+        public List<string> GetCounties()
+        {
+            List<string> Counties = new List<String>();
+            Counties.Add("Beaver");
+            Counties.Add("BoxElder");
+            Counties.Add("Cache");
+            Counties.Add("Carbon");
+            Counties.Add("Daggett");
+            Counties.Add("Davis");
+            Counties.Add("Duchesne");
+            Counties.Add("Emery");
+            Counties.Add("Garfield");
+            Counties.Add("Grand");
+            Counties.Add("Iron");
+            Counties.Add("Juab");
+            Counties.Add("Kane");
+            Counties.Add("Millard");
+            Counties.Add("Morgan");
+            Counties.Add("Piute");
+            Counties.Add("Rich");
+            Counties.Add("SaltLake");
+            Counties.Add("SanJuan");
+            Counties.Add("Sanpete");
+            Counties.Add("Sevier");
+            Counties.Add("Summit");
+            Counties.Add("Tooele");
+            Counties.Add("Uintah");
+            Counties.Add("Utah");
+            Counties.Add("Wasatch");
+            Counties.Add("Washington");
+            Counties.Add("Wayne");
+            Counties.Add("Weber");
+            return Counties;
+        }
         public HomeController(ICrashesRepository temp, InferenceSession session)
         {
             _repo = temp;
             _session = session;
+            Counties = GetCounties();
         }
 
         public IActionResult Index()
@@ -65,15 +102,14 @@ namespace INTEX2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpGet]
+        /*[HttpGet]
         public IActionResult Predict()
         {
             return View();
-        }
-        [HttpPost]
-        public IActionResult Predict(long dui, long teens, long restraint, long old, long distracted, long drowsy, long night, string myCounty)
+        }*/
+        [HttpGet]
+        public IActionResult Predict(int crashId, long dui, long teens, long restraint, long old, long distracted, long drowsy, long night, string myCounty)
         {
-
             long Beaver = 0;
             long BoxElder = 0;
             long Cache = 0;
@@ -102,38 +138,7 @@ namespace INTEX2.Controllers
             long Wasatch = 0;
             long Washington = 0;
             long Wayne = 0;
-            long Weber = 0;
-
-            List<String> Counties = new List<String>();
-            Counties.Add("Beaver");
-            Counties.Add("BoxElder");
-            Counties.Add("Cache");
-            Counties.Add("Carbon");
-            Counties.Add("Daggett");
-            Counties.Add("Davis");
-            Counties.Add("Duchesne");
-            Counties.Add("Emery");
-            Counties.Add("Garfield");
-            Counties.Add("Grand");
-            Counties.Add("Iron");
-            Counties.Add("Juab");
-            Counties.Add("Kane");
-            Counties.Add("Millard");
-            Counties.Add("Morgan");
-            Counties.Add("Piute");
-            Counties.Add("Rich");
-            Counties.Add("SaltLake");
-            Counties.Add("SanJuan");
-            Counties.Add("Sanpete");
-            Counties.Add("Sevier");
-            Counties.Add("Summit");
-            Counties.Add("Tooele");
-            Counties.Add("Uintah");
-            Counties.Add("Utah");
-            Counties.Add("Wasatch");
-            Counties.Add("Washington");
-            Counties.Add("Wayne");
-            Counties.Add("Weber");
+            long Weber = 0;           
             foreach (string county in Counties)
             {
                 if(myCounty == "Beaver")
@@ -297,8 +302,12 @@ namespace INTEX2.Controllers
                 NamedOnnxValue.CreateFromTensor("int_input", data.AsTensor())
             });
 
+            Tensor<string> score = result.First().AsTensor<string>();
+            var predictionResult = new PredictionResult { CrashSeverityId = score.First() };
+            ViewBag.Result = predictionResult.CrashSeverityId;
+            Crash Crash = _repo.Crashes.Single(p => p.CRASH_ID == crashId);
 
-            return View();
+            return View(Crash);
         }
     }
 }
