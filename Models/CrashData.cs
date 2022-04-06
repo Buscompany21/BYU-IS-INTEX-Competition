@@ -26,13 +26,11 @@ namespace INTEX2.Models
         public int Garfield { get; set; }
         public int Grand { get; set; }
         public int Iron { get; set; }
-
         public int Juab { get; set; }
         public int Kane { get; set; }
         public int Millard { get; set; }
         public int Morgan { get; set; }
         public int Piute { get; set; }
-
         public int Rich { get; set; }
         public int SaltLake { get; set; }
         public int SanJuan { get; set; }
