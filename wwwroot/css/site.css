@@ -74,3 +74,18 @@ body {
 .hero {
     height: 10px !important;
 }
+
+@media (min-width: 1200px) {
+.container {
+    max-width: 1740px;}
+}
+
+.d-grid {
+    display: grid !important;
+}
+.gap-1 {
+    gap: 0.25rem !important;
+}
+.gap-2 {
+    gap: 0.5rem !important;
+}
