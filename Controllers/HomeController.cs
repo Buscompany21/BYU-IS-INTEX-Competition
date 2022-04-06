@@ -71,38 +71,38 @@ namespace INTEX2.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Predict(int dui, int teens, int restraint, int old, int distracted, int drowsy, string myCounty)
+        public IActionResult Predict(long dui, long teens, long restraint, long old, long distracted, long drowsy, long night, string myCounty)
         {
-            
-            int Beaver = 0;
-            int BoxElder = 0;
-            int Cache = 0;
-            int Carbon = 0;
-            int Daggett = 0;
-            int Davis = 0;
-            int Duchesne = 0;
-            int Emery = 0;
-            int Garfield = 0;
-            int Grand = 0;
-            int Iron = 0;
-            int Juab = 0;
-            int Kane = 0;
-            int Millard = 0;
-            int Morgan = 0;
-            int Piute = 0;
-            int Rich = 0;
-            int SaltLake = 0;
-            int SanJuan = 0;
-            int Sanpete = 0;
-            int Sevier = 0;
-            int Summit = 0;
-            int Tooele = 0;
-            int Uintah = 0;
-            int Utah = 0;
-            int Wasatch = 0;
-            int Washington = 0;
-            int Wayne = 0;
-            int Weber = 0;
+
+            long Beaver = 0;
+            long BoxElder = 0;
+            long Cache = 0;
+            long Carbon = 0;
+            long Daggett = 0;
+            long Davis = 0;
+            long Duchesne = 0;
+            long Emery = 0;
+            long Garfield = 0;
+            long Grand = 0;
+            long Iron = 0;
+            long Juab = 0;
+            long Kane = 0;
+            long Millard = 0;
+            long Morgan = 0;
+            long Piute = 0;
+            long Rich = 0;
+            long SaltLake = 0;
+            long SanJuan = 0;
+            long Sanpete = 0;
+            long Sevier = 0;
+            long Summit = 0;
+            long Tooele = 0;
+            long Uintah = 0;
+            long Utah = 0;
+            long Wasatch = 0;
+            long Washington = 0;
+            long Wayne = 0;
+            long Weber = 0;
 
             List<String> Counties = new List<String>();
             Counties.Add("Beaver");
@@ -254,7 +254,48 @@ namespace INTEX2.Controllers
                 }
             }
 
-            _session.Run(dui, teens, restraint, old, distracted, drowsy, Beaver, BoxElder, Cache, Carbon, Daggett, Davis, Duchesne, Emery, Garfield, Grand, Iron, Juab, Kane, Millard, Morgan, Piute, Rich, SaltLake, SanJuan, Sanpete, Sevier, Summit, Tooele, Uintah, Utah, Wasatch, Washington, Wayne, Weber);
+            CrashData data = new CrashData();
+            data.Dui = dui;
+            data.Teen = teens;
+            data.Old = old;
+            data.Drowsy = drowsy;
+            data.Distracted = distracted;
+            data.Restraint = restraint;
+            data.Night = night;
+            data.Beaver = Beaver;
+            data.BoxElder = BoxElder;
+            data.Cache = Cache;
+            data.Daggett = Daggett;
+            data.Davis = Davis;
+            data.Duchesne = Duchesne;
+            data.Emery = Emery;
+            data.Garfield = Garfield;
+            data.Grand = Grand;
+            data.Iron = Iron;
+            data.Juab = Juab;
+            data.Kane = Kane;
+            data.Millard = Millard;
+            data.Morgan = Morgan;
+            data.Piute = Piute;
+            data.Rich = Rich;
+            data.SaltLake = SaltLake;
+            data.SanJuan = SanJuan;
+            data.Sanpete = Sanpete;
+            data.Sevier = Sevier;
+            data.Summit = Summit;
+            data.Tooele = Tooele;
+            data.Uintah = Uintah;
+            data.Utah = Utah;
+            data.Wasatch = Wasatch;
+            data.Washington = Washington;
+            data.Wayne = Wayne;
+            data.Weber = Weber;
+
+
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("int_input", data.AsTensor())
+            });
 
 
             return View();
