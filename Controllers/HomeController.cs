@@ -160,6 +160,47 @@ namespace INTEX2.Controllers
             return View(yeet);
         }
 
+        [HttpGet]
+        public IActionResult DataSummaryGrid(string cRASH_SEVERITY_ID, string cOUNTY_NAME, int pageNum = 1)
+        {
+
+            int pageSize = 25;
+
+            var yeet = new CrashesViewModel
+            {
+
+                Crashes = _repo.Crashes
+                .Where(p => p.COUNTY_NAME != "")
+                .Where(p => p.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                .Where(p => p.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null)
+
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+
+                    TotalNumCrashes =
+                        (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                            ? _repo.Crashes.Count()
+                            : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                            .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+
+                    //TotalNumCrashes =
+                    //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                    //        ? _repo.Crashes.Count()
+                    //        : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                    //        .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+
+
+                    CrashesPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+            return View(yeet);
+        }
+
         public IActionResult Privacy()
         {
             return View();
