@@ -19,8 +19,8 @@ namespace INTEX2
 {
     public class Startup
     {
-        private string _IntexDbConnection = null;
-        private string _ApplicationDbConnection = null;
+        //private string _IntexDbConnection = null;
+        //private string _ApplicationDbConnection = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,18 +31,19 @@ namespace INTEX2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            _IntexDbConnection = Configuration["IntexDbConnection"];
-            _ApplicationDbConnection = Configuration["ApplicationDbConnection"];
+            //_IntexDbConnection = Configuration["IntexDbConnection"];
+            //_ApplicationDbConnection = Configuration["ApplicationDbConnection"];
+            
             services.AddDbContext<IntexDbContext>(options =>
             {
-                options.UseMySql(_IntexDbConnection);
+                options.UseMySql(Configuration["ConnectionStrings:IntexDbConnection"]);
             });
 
             //Uncomment this in just a moment
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(_ApplicationDbConnection);
+                options.UseMySql(Configuration["ConnectionStrings:ApplicationDbConnection"]);
             });
 
             //services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -138,19 +138,19 @@ namespace INTEX2.Controllers
 
                 PageInfo = new PageInfo
                 {
-<<<<<<< HEAD
+
                     TotalNumCrashes = 
                         (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
                             ? _repo.Crashes.Count() 
                             : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
                             .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
-=======
-                    TotalNumCrashes =
-                        (COUNTY_NAME == null & CRASH_SEVERITY_ID == null
-                            ? _repo.Crashes.Count()
-                            : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
-                            .Where(x => x.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null).Count()),
->>>>>>> bf2ffcb926b8bc6684bf06fb2ae1bbb41436e0bd
+
+                    //TotalNumCrashes =
+                    //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                    //        ? _repo.Crashes.Count()
+                    //        : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                    //        .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+
 
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
