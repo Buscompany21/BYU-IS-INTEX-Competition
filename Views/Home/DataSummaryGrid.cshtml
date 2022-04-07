@@ -5,116 +5,153 @@
 @model CrashesViewModel
 
 
-<h1>Crash Data</h1>
+<h1 class="text-center">Crash Data</h1>
 
 <div class="row m-1 p-1">
 
     <!--Left Section of Page-->
     <div id="types" class="col-2">
+        
         @*<vc:county></vc:county>*@
         @*Put  form here*@
     </div>
-
-
-    <!--Right Section of Page-->
-
     <div class="col-10">
-
-        @foreach (var c in Model.Crashes.ToList())
-        {
-            int iCount = 0;
-
-            <!--start column-->
-
-
-
-            iCount++;
-            @if (iCount < 13)
+        <div class="row">
+            @{ int iCount = 0;}
+            @foreach (var c in Model.Crashes)
             {
-                <div class="col-6 m-3">
-                    <!--Start Card-->
-                    <div class="card card-outline-primary m-1 p-1">
-                        <div class="bg-light p-1">
-                            <h4 class="display-6">@c.CRASH_ID</h4>
-                        </div>
 
-
-                        <div class="flex-sm-row">
-                            <div>
-                                <ul>
-                                    <li>County: @c.COUNTY_NAME</li>
-                                    <li>City: @c.CITY</li>
-                                    <li>Road: @c.MAIN_ROAD_NAME</li>
-                                    <li>Route: @c.ROUTE</li>
-                                    <li>Milepoint: @c.MILEPOINT</li>
-                                    <li>Coordinates: @c.LAT_UTM_Y, @c.LONG_UTM_X</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <div class="card-body">
-                                    <h1 class="display-4">@c.CRASH_SEVERITY_ID</h1>
+                if (iCount < 12)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-warning mb-3" style="max-width: 25rem;">
+                            @if (c.CRASH_SEVERITY_ID == "1")
+                            {
+                                <div class="bg-success p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
                                 </div>
-                            </div>
-                        </div>
-
-
-
-                        <span class="badge bg-info" style="float:right">
-                            Price: @c.CRASH_SEVERITY_ID
-                        </span>
-                    </div>
-                    <!--End-->
-
-                </div>
-            }
-            @if (iCount >= 13)
-            {
-                <div class="col-6 m-3">
-                    <!--Start Card-->
-                    <div class="card card-outline-primary m-1 p-1">
-                        <div class="bg-light p-1">
-                            <h4 class="display-6">@c.CRASH_ID</h4>
-                        </div>
-
-
-                        <div class="flex-sm-row">
-                            <div>
-                                <ul>
-                                    <li>County: @c.COUNTY_NAME</li>
-                                    <li>City: @c.CITY</li>
-                                    <li>Road: @c.MAIN_ROAD_NAME</li>
-                                    <li>Route: @c.ROUTE</li>
-                                    <li>Milepoint: @c.MILEPOINT</li>
-                                    <li>Coordinates: @c.LAT_UTM_Y, @c.LONG_UTM_X</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <div class="card-body">
-                                    <h1 class="display-4">@c.CRASH_SEVERITY_ID</h1>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "2")
+                            {
+                                <div class="bg-warning p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
                                 </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "3")
+                            {
+                                <div class="bg-warning p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "4")
+                            {
+                                <div class="bg-danger p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "5")
+                            {
+                                <div class="bg-danger p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            <p1 class="text-center"> @c.COUNTY_NAME COUNTY</p1>
+
+                            <div class="flex-sm-row">
+                                <div>
+
+                                    <ul>
+
+                                        <li>City: @c.CITY</li>
+                                        <li>Road: @c.MAIN_ROAD_NAME</li>
+                                        <li>Route: @c.ROUTE</li>
+                                        <li>Milepoint: @c.MILEPOINT</li>
+                                        <li>Coordinates: @c.LAT_UTM_Y, @c.LONG_UTM_X</li>
+                                    </ul>
+                                </div>
+
+
                             </div>
+
+                            <button class="btn btn bg-primary" style="margin-left:100px; margin-right:100px">
+                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" style="color:white">View Details</a>
+                            </button>
+
                         </div>
-
-
-
-                        <span class="badge bg-info" style="float:right">
-                            Price: @c.CRASH_SEVERITY_ID
-                        </span>
                     </div>
-                    <!--End-->
 
-                </div>
+                }
+                if (iCount > 12)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-warning mb-3" style="max-width: 25rem;">
+                            @if (c.CRASH_SEVERITY_ID == "1")
+                            {
+                                <div class="bg-success p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "2")
+                            {
+                                <div class="bg-warning p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "3")
+                            {
+                                <div class="bg-warning p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "4")
+                            {
+                                <div class="bg-danger p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            @if (c.CRASH_SEVERITY_ID == "5")
+                            {
+                                <div class="bg-danger p-1">
+                                    <h4 class="display-6 text-center">Severity Score: @c.CRASH_SEVERITY_ID</h4>
+                                </div>
+                            }
+                            <p1 class="text-center"> @c.COUNTY_NAME COUNTY</p1>
+
+                            <div class="flex-sm-row">
+                                <div>
+
+                                    <ul>
+
+                                        <li>City: @c.CITY</li>
+                                        <li>Road: @c.MAIN_ROAD_NAME</li>
+                                        <li>Route: @c.ROUTE</li>
+                                        <li>Milepoint: @c.MILEPOINT</li>
+                                        <li>Coordinates: @c.LAT_UTM_Y, @c.LONG_UTM_X</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+
+                            <button class="btn btn bg-primary" style="margin-left:100px; margin-right:100px">
+                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" style="color:white">View Details</a>
+                            </button>
+
+                        </div>
+                    </div>
+
+                }
+                iCount++;
+
             }
-        }
+        </div>
     </div>
 
-</div>
 
 
 
-@*Pagination at the bottom of the page*@
-<div page-model="@Model.PageInfo" page-action="DataSummary" page-class="btn"
-     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
-     class="btn-group pull-right m-1"></div>
+
+    @*Pagination at the bottom of the page*@
+    <div page-model="@Model.PageInfo" page-action="DataSummary" page-class="btn"
+         page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+         class="btn-group pull-right m-1"></div>
