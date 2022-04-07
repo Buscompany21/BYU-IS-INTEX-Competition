@@ -4,6 +4,74 @@
 
 @model CrashesViewModel
 
+<style>
+    /* Start of my code The switch - the box around the slider */
+    .whiteTextColor {
+        color:white;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 26px;
+    }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(18px);
+        -ms-transform: translateX(18px);
+        transform: translateX(18px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 18px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
+
 <div class="row">
     <div class="col-10">
         <h1>Crash Data</h1>
@@ -18,18 +86,190 @@
 <div class="row m-1 p-1">
 
     <!--Left Section of Page-->
-    <div id="types" class="col-2">
-        
+    <div id="types" class="col-4">
+
         @*<vc:county></vc:county>*@
-        <h1></h1>
-        <form>
-            <div class="form-group">
-                <label id="county" name="county">County</label>
-                <input type="text" id="county" name="county" />
+        <form method="post">
+            <div>
+                <div style="width: fit-content;">
+                    <label>City</label><br />
+                    <select name="cityName">
+                        <option disabled selected value=""> -- select an option -- </option>
+                        @foreach (string c in ViewBag.CITY)
+                        {
+                            @if ((@c != "") || (@c != "***  ERROR  ***"))
+                            {
+                                <option value="@c">@c</option>
+                            }
+                        }
+                    </select>
+                </div><br />
+
+                <div style="width: fit-content;">
+                    <label>County</label><br />
+                    <select name="countyName">
+                        <option disabled selected value=""> -- select an option -- </option>
+                        @foreach (string c in ViewBag.COUNTY_NAME)
+                        {
+                            @if (@c != "")
+                            {
+                                <option value="@c">@c</option>
+                            }
+
+                        }
+                    </select>
+                </div><br />
+
+                <div style="width: fit-content;">
+                    <label>Crash Severity:</label><br />
+                    <select name="severityId">
+                        <option disabled selected value=""> -- select an option -- </option>
+                        <option value="1"> No Injury </option>
+                        <option value="2"> Possible Injury </option>
+                        <option value="3"> Suspected Minor Injury </option>
+                        <option value="4"> Suspected Serious Injury </option>
+                        <option value="5"> Fatal </option>
+
+                    </select>
+                </div><br />
             </div>
+
+            <div>
+                <!-- Rounded switch -->
+                <label for="wz">Crash Occured In Work Zone?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="wz">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="pi">Pedestrian Involved In Crash?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="pi">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="bi">Bicyclist Involved In Crash?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="bi">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div>
+                <!-- Rounded switch -->
+                <label for="mi">Motorcycle Involved In Crash?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="mi">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="ir">Did Occupants Have Improper Restraints?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="ir">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="ur">Did Occupants Have No Restraints?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="ur">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div>
+                <!-- Rounded switch -->
+                <label for="DUI">Crash Occured From DUI?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="DUI">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="inRel">Crash Occured In Intersection?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="inRel">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="wiRel">Crash Occured From Wild Animal?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="wiRel">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div>
+                <!-- Rounded switch -->
+                <label for="overRel">Crash Involved An Overturn Rollover?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="overRel">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="domRel">Crash Occured From Domestic Animal?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="domRel">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="comInv">Crash Involved A Commercial Vehicle?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="comInv">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div>
+                <!-- Rounded switch -->
+                <label for="oldInv">Driver(s) Involved Was/Were 55+?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="oldInv">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="teenInv">Driver(s) Involved Was/Were Teenager(s)?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="teenInv">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="ndCond">Crash Occured During The Evening?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="ndCond">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div>
+                <!-- Rounded switch -->
+                <label for="sinVeh">Crash Involved Only A Single Vehicle?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="sinVeh">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="disDriv">Crash Occured Due To Distracted Driving?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="disDriv">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="drowDriv">Crash Occured Due To Drowsy Driving?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="drowDriv">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div>
+                <label for="roadDep">Crash Occured On A Roadway Departure?:</label>
+                <label class="switch">
+                    <input type="checkbox" name="roadDep">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <button class="btn btn bg-primary" type="submit"><span class="whiteTextColor">Submit Crash Data</span></button>
+
+
         </form>
     </div>
-    <div class="col-10">
+    <div class="col-8">
         <div class="row">
             @{ int iCount = 0;}
             @foreach (var c in Model.Crashes)
@@ -148,7 +388,7 @@
                             </div>
 
                             <button class="btn btn bg-primary" style="margin-left:125px; margin-right:125px">
-                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" style="color:white">View Details</a>
+                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" class="whiteTextColor">View Details</a>
                             </button>
 
                         </div>
@@ -160,6 +400,7 @@
             }
         </div>
     </div>
+</div>
 
 
 
