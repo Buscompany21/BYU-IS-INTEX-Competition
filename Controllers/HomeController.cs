@@ -160,6 +160,7 @@ namespace INTEX2.Controllers
             return View(yeet);
         }
 
+        [HttpGet]
         public IActionResult DataSummaryGrid(string cRASH_SEVERITY_ID, string cOUNTY_NAME, int pageNum = 1)
         {
 
