@@ -7,20 +7,10 @@
 <h1>Crash Data</h1>
 
 
-@*<div class="row">
-    <div class="col-8">
-
-    </div>
-    <div class="col">
-        <div page-model="@Model.PageInfo" page-action="DataSummary" page-class="btn"
-             page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
-             class="btn-group pull-right m-1"></div>
-    </div>
-    
-</div>*@
 <div class="row m-1 p-1">
     <div id="types" class="col-2">
         <vc:county></vc:county>
+
     </div>
     <div class="col-10">
         <table class="table table-bordered table-striped">
@@ -34,62 +24,29 @@
                     <td>Route</td>
                     <td>Milepoint</td>
                     <td>Coordinates</td>
-                    <td></td>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach (var c in Model.Crashes)
                 {
-
-
-                    @*<tr>
-                            <td>@c.CRASH_SEVERITY_ID</td>
-                            <td>@c.CRASH_DATETIME</td>
-                            <td>@c.COUNTY_NAME</td>
-                            <td>@c.CITY</td>
-                            <td>@c.MAIN_ROAD_NAME</td>
-                            <td>@c.ROUTE</td>
-                            <td>@c.MILEPOINT</td>
-                            <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
-                            @*<td><a asp-controller="Home" asp-action="Edit" asp-route-BowlerID="@b.BowlerID">Edit</a></td>
-                                <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>
-                        </tr>*@
-
-                    @*<tr>
-                        <td>@c.CRASH_SEVERITY_ID</td>
-                        <td>@c.CRASH_DATETIME</td>
-                        <td>@c.COUNTY_NAME</td>
-                        <td>@c.CITY</td>
-                        <td>@c.MAIN_ROAD_NAME</td>
-                        <td>@c.ROUTE</td>
-                        <td>@c.MILEPOINT</td>
-                        <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
-                        <td><a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")">View Details</a></td>
-                        @*<td><a asp-controller="Home" asp-action="Edit" asp-route-BowlerID="@b.BowlerID">Edit</a></td>
-                            <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>
-                    </tr>*@
-
-
-                    <tr>
-                        <td>@c.CRASH_SEVERITY_ID</td>
-                        <td>@c.CRASH_DATETIME</td>
-                        <td>@c.COUNTY_NAME</td>
-                        <td>@c.CITY</td>
-                        <td>@c.MAIN_ROAD_NAME</td>
-                        <td>@c.ROUTE</td>
-                        <td>@c.MILEPOINT</td>
-                        <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
-                        <td><a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")">View Details</a></td>
-                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@c.CRASH_ID">Edit</a></td>
-                        <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@c.CRASH_ID">Delete</a></td>
-                    </tr>
-
+                <tr>
+                    <td>@c.CRASH_SEVERITY_ID</td>
+                    <td>@c.CRASH_DATETIME</td>
+                    <td>@c.COUNTY_NAME</td>
+                    <td>@c.CITY</td>
+                    <td>@c.MAIN_ROAD_NAME</td>
+                    <td>@c.ROUTE</td>
+                    <td>@c.MILEPOINT</td>
+                    <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
+                    @*<partial name="_AdminPartial" />*@
+                    @*<td><a asp-controller="Home" asp-action="Edit" asp-route-BowlerID="@b.BowlerID">Edit</a></td>
+        <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>*@
+                </tr>
                 }
             </tbody>
         </table>
     </div>
-
 </div>
 
 
@@ -99,7 +56,3 @@
      page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
      class="btn-group pull-right m-1"></div>
 
-<br />
-<br />
-<br />
-<br />
