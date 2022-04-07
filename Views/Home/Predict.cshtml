@@ -1,8 +1,164 @@
 ﻿@{
 }
 @model Crash
-<div>
-    <p>@ViewBag.Result</p>
-    <p>@Model.CRASH_DATETIME</p>
-    <p>@Model.CRASH_ID</p>
-</div>
+
+    <!--Top row-->
+    <div class="row">
+        <!--Top Left-->
+        <div class="col-lg-6">
+
+            <div class="card text-white bg-primary mb-3 d-inline-block" style="width: 242px;">
+                <div class="card-header">Severity</div>
+                <div class="card-body">
+                    <h4 class="card-title text-center">Actual</h4>
+                    <h1 class="display-3 text-center">@ViewBag.Result</h1>
+                </div>
+            </div>
+
+            <div class="card text-white bg-dark mb-3 d-inline-block" style="width: 242px;">
+                <div class="card-header">Severity</div>
+                <div class="card-body">
+                    <h4 class="card-title text-center">Predicted</h4>
+                    <h1 class="display-3 text-center">@ViewBag.Result</h1>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <!--top right-->
+        <div class="col-lg-6">
+            <h1 class="display-4 text-center">Crash ID @Model.CRASH_ID</h1>
+            <h3 class="text-center text-muted">@Model.CRASH_DATETIME</h3>
+        </div>
+    </div>
+
+    <!--bottom row-->
+    <div class="row">
+        <!--bottom left-->
+        <div class="col-lg-6">
+
+            <h1>Location Information</h1>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5>County:</h5> <h6 class="text-center">@Model.COUNTY_NAME</h6>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5>City:</h5> <h6 class="text-center">@Model.CITY</h6>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5>Main Road:</h5> <h6 class="text-center">@Model.MAIN_ROAD_NAME</h6>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5>Route:</h5> <h6 class="text-center">@Model.ROUTE</h6>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5>Milepoint:</h5> <h6 class="text-center">@Model.MILEPOINT</h6>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5>Coordinates:</h5> <h6 class="text-center">@Model.LAT_UTM_Y, @Model.LONG_UTM_X</h6>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+        <!--bottom right-->
+        <div class="col-lg-6">
+            <h1>Pottential Causes</h1>
+            @if (Model.WORK_ZONE_RELATED == "true")
+            {
+                <div>Work Zone Related</div>
+            }
+            @if (Model.PEDESTRIAN_INVOLVED == "true")
+            {
+                <div>Pedestrian Involved</div>
+            }
+            @if (Model.BICYCLIST_INVOLVED == "true")
+            {
+                <div>Bicyclist Involved</div>
+            }
+            @if (Model.MOTORCYCLE_INVOLVED == "true")
+            {
+                <div>Motorcycle Involved</div>
+            }
+            @if (Model.IMPROPER_RESTRAINT == "true")
+            {
+                <div>Improper Restraint</div>
+            }
+            @if (Model.UNRESTRAINED == "true")
+            {
+                <div>Unrestrained</div>
+            }
+            @if (Model.DUI == "true")
+            {
+                <div>Driving Under Influence</div>
+            }
+            @if (Model.INTERSECTION_RELATED == "true")
+            {
+                <div>Intersection Related</div>
+            }
+            @if (Model.WILD_ANIMAL_RELATED == "true")
+            {
+                <div>Wild Animal Related</div>
+            }
+            @if (Model.DOMESTIC_ANIMAL_RELATED == "true")
+            {
+                <div>Domestic Animal Related</div>
+            }
+            @if (Model.OVERTURN_ROLLOVER == "true")
+            {
+                <div>Overturn Rollover</div>
+            }
+            @if (Model.COMMERCIAL_MOTOR_VEH_INVOLVED == "true")
+            {
+                <div>Commercial Motor Vehicle Involved</div>
+            }
+            @if (Model.TEENAGE_DRIVER_INVOLVED == "true")
+            {
+                <div>Teenage Driver Involved</div>
+            }
+            @if (Model.OLDER_DRIVER_INVOLVED == "true")
+            {
+                <div>Older Driver Involved</div>
+            }
+            @if (Model.NIGHT_DARK_CONDITION == "true")
+            {
+                <div>Night Dark Condition</div>
+            }
+            @if (Model.SINGLE_VEHICLE == "true")
+            {
+                <div>Single Vehicle</div>
+            }
+            @if (Model.DISTRACTED_DRIVING == "true")
+            {
+                <div>Distracted Driving</div>
+            }
+            @if (Model.DROWSY_DRIVING == "true")
+            {
+                <div>Drowsy Driving</div>
+            }
+            @if (Model.ROADWAY_DEPARTURE == "true")
+            {
+                <div>Roadway Departure</div>
+            }
+
+        </div>
+
+    </div>
