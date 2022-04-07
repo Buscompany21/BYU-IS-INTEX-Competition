@@ -14,5 +14,23 @@ namespace INTEX2.Models
             _context = temp;
         }
         public IQueryable<Crash> Crashes => _context.Crashes;
+
+        public void Save(Crash c)
+        {
+            _context.Update(c);
+            _context.SaveChanges();
+        }
+
+        public void Add(Crash c)
+        {
+            _context.Add(c);
+            _context.SaveChanges();
+        }
+
+        public void Delete(Crash c)
+        {
+            _context.Remove(c);
+            _context.SaveChanges();
+        }
     }
 }

@@ -81,9 +81,9 @@ namespace INTEX2.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes = 
+                    TotalNumCrashes =
                         (COUNTY_NAME == null & CRASH_SEVERITY_ID == null
-                            ? _repo.Crashes.Count() 
+                            ? _repo.Crashes.Count()
                             : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
                             .Where(x => x.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null).Count()),
 
@@ -141,14 +141,14 @@ namespace INTEX2.Controllers
             long Wasatch = 0;
             long Washington = 0;
             long Wayne = 0;
-            long Weber = 0;           
+            long Weber = 0;
             foreach (string county in Counties)
             {
-                if(myCounty == "Beaver")
+                if (myCounty == "Beaver")
                 {
                     Beaver = 1;
                 }
-                else if(myCounty == "BoxElder")
+                else if (myCounty == "BoxElder")
                 {
                     BoxElder = 1;
                 }
@@ -316,7 +316,104 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.CITY = 
+
+            ViewBag.CITY = _repo.Crashes.Where(x => x.CITY != "***  ERROR  ***").Where(x => x.CITY != "").Select(x => x.CITY).Distinct().OrderBy(x => x);
+            ViewBag.COUNTY_NAME = _repo.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Crash c)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.Add(c);
+
+                int pageSize = 50;
+                int page = 1;
+
+                var yeet = new CrashesViewModel
+                {
+                    Crashes = _repo.Crashes
+                    .Take(pageSize),
+
+                    PageInfo = new PageInfo
+                    {
+                        TotalNumCrashes = _repo.Crashes.Count(),
+                            
+
+                        CrashesPerPage = pageSize,
+                        CurrentPage = page
+                    }
+                };
+
+                return View("DataSummary", yeet);
+
+            }
+            else
+            {
+                ViewBag.CITY = _repo.Crashes.Where(x => x.CITY != "***  ERROR  ***").Where(x => x.CITY != "").Select(x => x.CITY).Distinct().OrderBy(x => x);
+                ViewBag.COUNTY_NAME = _repo.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x);
+                return View("DataSummary");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+
+            ViewBag.CITY = _repo.Crashes.Where(x => x.CITY != "***  ERROR  ***").Where(x => x.CITY != "").Select(x => x.CITY).Distinct().OrderBy(x => x);
+            ViewBag.COUNTY_NAME = _repo.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x);
+
+            var crash = _repo.Crashes.Single(x => x.CRASH_ID == id);
+            return View(crash);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Crash c)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.Save(c);
+
+                int pageSize = 50;
+                int page = 1;
+
+                var yeet = new CrashesViewModel
+                {
+                    Crashes = _repo.Crashes
+                    .Take(pageSize),
+
+                    PageInfo = new PageInfo
+                    {
+                        TotalNumCrashes = _repo.Crashes.Count(),
+
+
+                        CrashesPerPage = pageSize,
+                        CurrentPage = page
+                    }
+                };
+                return View("Datasummary", yeet);
+
+            }
+            else
+            {
+                ViewBag.CITY = _repo.Crashes.Where(x => x.CITY != "***  ERROR  ***").Where(x => x.CITY != "").Select(x => x.CITY).Distinct().OrderBy(x => x);
+                ViewBag.COUNTY_NAME = _repo.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x);
+                return View(c);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var crash = _repo.Crashes.Single(x => x.CRASH_ID == id);
+            return View(crash);
+        }
+        [HttpPost]
+        public IActionResult Delete(Crash c)        {
+            _repo.Delete(c);
+            return RedirectToAction("Datasummary");
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+@model Crash
+
+
+<h2>Confirm Deletion</h2>
+<h3>Are you sure you want to delete the crash: @Model.CRASH_ID</h3>
+
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <button type="submit">Delete</button>
+    <a asp-controller="Home" asp-action="DataSummary" class="btn btn-primary">Cancel</a>
+
+    <input type="hidden" asp-for="CRASH_ID" />
+</form>
