@@ -8,11 +8,26 @@
 
 <div class="d-grid gap-1">
 
-    <a asp-controller="Home" asp-action="DataSummary" asp-route-CRASH_SEVERITY_ID="" asp-route-pageNum="1"
-       class="btn btn-outline-secondary">Home</a>
+    <a asp-controller="Home" asp-action="DataSummary" asp-route-cRASH_SEVERITY_ID="" asp-route-pageNum="1"
+        class="btn btn-outline-secondary">Home</a>
+
     @foreach (string severity in Model)
     {
-        <a asp-controller="Home" asp-action="DataSummary" asp-route-CRASH_SEVERITY_ID="@severity" asp-route-pageNum="1"
-           class="btn @(ViewBag.SelectedSeverity == severity ? "btn-primary" : "btn-secondary")">@severity</a>
+        <a asp-controller="Home" asp-action="DataSummary" asp-route-cRASH_SEVERITY_ID="@severity" asp-route-pageNum="1"
+            class="btn @(ViewBag.SelectedSeverity == severity ? "btn-primary" : "btn-secondary")">@severity</a>
     }
 </div>
+
+        @*<div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#about">About</a>
+                    <a href="#base">Base</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#custom">Custom</a>
+                    <a href="#support">Support</a>
+                    <a href="#tools">Tools</a>
+                </div>
+            </div>*@

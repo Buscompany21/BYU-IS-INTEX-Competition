@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Data Summary";
+    ViewData["Title"] = "Test";
 }
 
 @model CrashesViewModel
@@ -7,22 +7,28 @@
 <h1>Crash Data</h1>
 
 
-@*<div class="row">
-    <div class="col-8">
 
-    </div>
-    <div class="col">
-        <div page-model="@Model.PageInfo" page-action="DataSummary" page-class="btn"
-             page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
-             class="btn-group pull-right m-1"></div>
-    </div>
-    
-</div>*@
 <div class="row m-1 p-1">
-    <div id="types" class="col-2">
-        <vc:county></vc:county>
+    <div id="types" class="col-3">
+        <form method="post">
+            <select>
+                <option value="">County</option>
+                @foreach (var c in Model.CrashTest.Select(c => c.COUNTY_NAME).Distinct().OrderBy(x => x))
+                {
+                    <option name="county" value="@c">@c</option>
+                }
+            </select>
+            <select>
+                <option value="">City</option>
+                @foreach (var c in Model.CrashTest.Select(c => c.CITY).Distinct().OrderBy(x => x))
+                {
+                    <option value="@c">@c</option>
+                }
+            </select>
+            <button type="submit" asp-controller="Home" asp-action="Test">Submit</button>
+        </form>
     </div>
-    <div class="col-10">
+    <div class="col-9">
         <table class="table table-bordered table-striped">
             <thead class="font-weight-bold">
                 <tr>
@@ -73,7 +79,6 @@
             </tbody>
         </table>
     </div>
-
 </div>
 
 
@@ -83,7 +88,5 @@
      page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
      class="btn-group pull-right m-1"></div>
 
-<br />
-<br />
 <br />
 <br />

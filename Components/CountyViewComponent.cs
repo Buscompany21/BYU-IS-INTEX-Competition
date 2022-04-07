@@ -24,6 +24,7 @@ namespace INTEX2.Components
 
             var causes = repo.Crashes
                 .Where(x => x.COUNTY_NAME != "")
+                .Where(x => x.COUNTY_NAME != null)
                 .Select(x => x.COUNTY_NAME)
                 .Distinct()
                 .OrderBy(x => x);

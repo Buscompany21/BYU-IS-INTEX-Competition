@@ -83,15 +83,15 @@ namespace INTEX2
                     pattern: "{COUNTY_NAME}/Page{pageNum}",
                     defaults: new { Controller = "Home", action = "DataSummary" });
 
-                endpoints.MapControllerRoute(
-                    name: "severitypage",
-                    pattern: "Page{pageNum}/Severity{CRASH_SEVERITY_ID}",
-                    defaults: new { Controller = "Home", action = "DataSummary", });
+                //endpoints.MapControllerRoute(
+                //    name: "severitypage",
+                //    pattern: "Page{pageNum}/Severity{CRASH_SEVERITY_ID}",
+                //    defaults: new { Controller = "Home", action = "DataSummary", COUNTY_NAME = ""});
 
-                endpoints.MapControllerRoute(
-                    name: "severitypage",
-                    pattern: "Severity{CRASH_SEVERITY_ID}/Page{pageNum}",
-                    defaults: new { Controller = "Home", action = "DataSummary", });
+                //endpoints.MapControllerRoute(
+                //    name: "severitypage2",
+                //    pattern: "{CRASH_SEVERITY_ID}/Page{pageNum}",
+                //    defaults: new { Controller = "Home", action = "DataSummary" });
 
                 endpoints.MapControllerRoute(
                     name: "Paging",
@@ -103,10 +103,10 @@ namespace INTEX2
                     pattern: "County{COUNTY_NAME}",
                     defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
 
-                endpoints.MapControllerRoute(
-                    name: "severity",
-                    pattern: "Severity{CRASH_SEVERITY_ID}",
-                    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
+                //endpoints.MapControllerRoute(
+                //    name: "severity",
+                //    pattern: "Severity{CRASH_SEVERITY_ID}",
+                //    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
 
