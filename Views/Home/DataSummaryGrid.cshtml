@@ -3,74 +3,8 @@
 }
 
 @model CrashesViewModel
+<link href="~/css/site - Copy.css" rel="stylesheet" />
 
-<style>
-    /* Start of my code The switch - the box around the slider */
-    .whiteTextColor {
-        color:white;
-    }
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 40px;
-        height: 26px;
-    }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-    /* The slider */
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-    input:checked + .slider {
-        background-color: #2196F3;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(18px);
-        -ms-transform: translateX(18px);
-        transform: translateX(18px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 18px;
-    }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-</style>
 
 <div class="row">
     <div class="col-10">
@@ -91,10 +25,10 @@
         @*<vc:county></vc:county>*@
         <form method="post">
             <div>
-                <div style="width: fit-content;">
+                <div class="boxfit">
                     <label>City</label><br />
                     <select name="cityName">
-                        <option disabled selected value=""> -- select an option -- </option>
+                        <option disabled selected value=""> -- select a city-- </option>
                         @foreach (string c in ViewBag.CITY)
                         {
                             @if ((@c != "") || (@c != "***  ERROR  ***"))
@@ -105,10 +39,10 @@
                     </select>
                 </div><br />
 
-                <div style="width: fit-content;">
+                <div class="boxfit">
                     <label>County</label><br />
                     <select name="countyName">
-                        <option disabled selected value=""> -- select an option -- </option>
+                        <option disabled selected value=""> -- select a county -- </option>
                         @foreach (string c in ViewBag.COUNTY_NAME)
                         {
                             @if (@c != "")
@@ -120,15 +54,15 @@
                     </select>
                 </div><br />
 
-                <div style="width: fit-content;">
+                <div class="boxfit">
                     <label>Crash Severity:</label><br />
                     <select name="severityId">
-                        <option disabled selected value=""> -- select an option -- </option>
-                        <option value="1"> No Injury </option>
-                        <option value="2"> Possible Injury </option>
-                        <option value="3"> Suspected Minor Injury </option>
-                        <option value="4"> Suspected Serious Injury </option>
-                        <option value="5"> Fatal </option>
+                        <option disabled selected value=""> -- select crash severity -- </option>
+                        <option value="1"> 1 - No Injury </option>
+                        <option value="2"> 2 - Possible Injury </option>
+                        <option value="3"> 3 - Suspected Minor Injury </option>
+                        <option value="4"> 4 - Suspected Serious Injury </option>
+                        <option value="5"> 5 - Fatal </option>
 
                     </select>
                 </div><br />
@@ -136,132 +70,132 @@
 
             <div>
                 <!-- Rounded switch -->
-                <label for="wz">Crash Occured In Work Zone?:</label>
+                <label for="wz">Work Zone?:</label>
                 <label class="switch">
                     <input type="checkbox" name="wz">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="pi">Pedestrian Involved In Crash?:</label>
+                <label for="pi">Pedestrian?:</label>
                 <label class="switch">
                     <input type="checkbox" name="pi">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="bi">Bicyclist Involved In Crash?:</label>
+                <label for="bi">Bicyclist?:</label>
                 <label class="switch">
                     <input type="checkbox" name="bi">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
 
             <div>
                 <!-- Rounded switch -->
-                <label for="mi">Motorcycle Involved In Crash?:</label>
+                <label for="mi">Motorcycle?:</label>
                 <label class="switch">
                     <input type="checkbox" name="mi">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="ir">Did Occupants Have Improper Restraints?:</label>
+                <label for="ir">Improper Restraints?:</label>
                 <label class="switch">
                     <input type="checkbox" name="ir">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="ur">Did Occupants Have No Restraints?:</label>
+                <label for="ur">No Restraints?:</label>
                 <label class="switch">
                     <input type="checkbox" name="ur">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
             <div>
                 <!-- Rounded switch -->
-                <label for="DUI">Crash Occured From DUI?:</label>
+                <label for="DUI">DUI?:</label>
                 <label class="switch">
                     <input type="checkbox" name="DUI">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="inRel">Crash Occured In Intersection?:</label>
+                <label for="inRel">Intersection?:</label>
                 <label class="switch">
                     <input type="checkbox" name="inRel">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="wiRel">Crash Occured From Wild Animal?:</label>
+                <label for="wiRel">Wild Animal?:</label>
                 <label class="switch">
                     <input type="checkbox" name="wiRel">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
             <div>
                 <!-- Rounded switch -->
-                <label for="overRel">Crash Involved An Overturn Rollover?:</label>
+                <label for="overRel">Overturn Rollover?:</label>
                 <label class="switch">
                     <input type="checkbox" name="overRel">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="domRel">Crash Occured From Domestic Animal?:</label>
+                <label for="domRel">Domestic Animal?:</label>
                 <label class="switch">
                     <input type="checkbox" name="domRel">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="comInv">Crash Involved A Commercial Vehicle?:</label>
+                <label for="comInv">Commercial Vehicle?:</label>
                 <label class="switch">
                     <input type="checkbox" name="comInv">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
 
             <div>
                 <!-- Rounded switch -->
-                <label for="oldInv">Driver(s) Involved Was/Were 55+?:</label>
+                <label for="oldInv">Driver 55+?:</label>
                 <label class="switch">
                     <input type="checkbox" name="oldInv">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="teenInv">Driver(s) Involved Was/Were Teenager(s)?:</label>
+                <label for="teenInv">Driver Teenager?:</label>
                 <label class="switch">
                     <input type="checkbox" name="teenInv">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="ndCond">Crash Occured During The Evening?:</label>
+                <label for="ndCond">During Evening?:</label>
                 <label class="switch">
                     <input type="checkbox" name="ndCond">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
             <div>
                 <!-- Rounded switch -->
-                <label for="sinVeh">Crash Involved Only A Single Vehicle?:</label>
+                <label for="sinVeh">Single Vehicle?:</label>
                 <label class="switch">
                     <input type="checkbox" name="sinVeh">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="disDriv">Crash Occured Due To Distracted Driving?:</label>
+                <label for="disDriv">Distracted Driving?:</label>
                 <label class="switch">
                     <input type="checkbox" name="disDriv">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
 
-                <label for="drowDriv">Crash Occured Due To Drowsy Driving?:</label>
+                <label for="drowDriv">Drowsy Driving?:</label>
                 <label class="switch">
                     <input type="checkbox" name="drowDriv">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
             <div>
-                <label for="roadDep">Crash Occured On A Roadway Departure?:</label>
+                <label for="roadDep">Roadway Departure?:</label>
                 <label class="switch">
                     <input type="checkbox" name="roadDep">
                     <span class="slider round"></span>
-                </label>
+                </label><br />
             </div>
 
             <button class="btn btn bg-primary" type="submit"><span class="whiteTextColor">Submit Crash Data</span></button>
