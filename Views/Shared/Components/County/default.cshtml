@@ -6,6 +6,11 @@
 
 @model IEnumerable<string>
 
+@if (User.Identity.IsAuthenticated)
+{
+    <a class="nav-link btn btn-success mb-3" asp-controller="Home" asp-action="Add">Add</a>
+}
+
 <div class="d-grid gap-1">
     @*<select>
         <option asp-controller="Home" asp-action="DataSummary" asp-route-COUNTY_NAME="" asp-route-pageNum="1"
@@ -14,28 +19,28 @@
         </option>*@
 
 
-        <a asp-controller="Home" asp-action="DataSummary" asp-route-cOUNTY_NAME="" asp-route-pageNum="1"
-        class="btn btn-outline-secondary">Home</a>
+    <a asp-controller="Home" asp-action="DataSummary" asp-route-cOUNTY_NAME="" asp-route-pageNum="1"
+       class="btn btn-outline-secondary">Home</a>
 
-        @foreach (string county in Model)
-        {
+    @foreach (string county in Model)
+    {
         @*<option asp-controller="Home" asp-action="DataSummary" asp-route-COUNTY_NAME="@county" asp-route-pageNum="1"
-                class="btn @(ViewBag.SelectedCounty == county ? "btn-primary" : "btn-secondary")">
-            @county
-         </option>*@
+                   class="btn @(ViewBag.SelectedCounty == county ? "btn-primary" : "btn-secondary")">
+               @county
+            </option>*@
 
-            <a asp-controller="Home" asp-action="DataSummary" asp-route-cOUNTY_NAME="@county" asp-route-pageNum="1"
-            class="btn @(ViewBag.SelectedCounty == county ? "btn-primary" : "btn-secondary")">@county</a>
-         }
+        <a asp-controller="Home" asp-action="DataSummary" asp-route-cOUNTY_NAME="@county" asp-route-pageNum="1"
+           class="btn @(ViewBag.SelectedCounty == county ? "btn-primary" : "btn-secondary")">@county</a>
+    }
     @*</select>*@
 </div>
 
 @*<SELECT>
 
-    <OPTION Value="Under 16">Under 16</OPTION>
-    <OPTION Value="16 to 25">16 to 25</OPTION>
-    <OPTION Value="26 to 40">26 to 40</OPTION>
-    <OPTION Value="40 to 60">40 to 60</OPTION>
-    <OPTION Value="Over 60">Over 60</OPTION>
+        <OPTION Value="Under 16">Under 16</OPTION>
+        <OPTION Value="16 to 25">16 to 25</OPTION>
+        <OPTION Value="26 to 40">26 to 40</OPTION>
+        <OPTION Value="40 to 60">40 to 60</OPTION>
+        <OPTION Value="Over 60">Over 60</OPTION>
 
-</SELECT>*@
+    </SELECT>*@
