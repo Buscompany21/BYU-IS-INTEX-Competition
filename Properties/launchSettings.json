@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -12,16 +12,20 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "RDS_USER": "admin",
+        "RDS_PORT": "3306",
+        "RDS_SERVER": "database-1.cca4n73ovkxn.us-east-1.rds.amazonaws.com",
+        "RDS_PASSWORD": "mxC:!838nu-dhQe",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "INTEX2": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
   }
 }
