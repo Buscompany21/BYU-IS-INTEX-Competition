@@ -480,5 +480,82 @@ namespace INTEX2.Controllers
             _repo.Delete(c);
             return RedirectToAction("Datasummary");
         }
+
+        [HttpGet]
+        public IActionResult Data()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Data(string severity)
+        {
+            Dictionary<string, float> Counts = new Dictionary<string, float>();
+
+            var Dui = _repo.Crashes.Where(x => x.DUI == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
+            Counts.Add("DUI", Dui);
+
+            //var T = _repo.Crashes.Where(x => x.TEENAGE_DRIVER_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
+            //var Te = _repo.Crashes.Where(x => x.TEENAGE_DRIVER_INVOLVED == "true").Count();
+            //float TeP = T / Te;
+            //Counts.Add("Teenager Involved", TeP);
+
+            var TEENAGE_DRIVER_INVOLVED = _repo.Crashes.Where(x => x.TEENAGE_DRIVER_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Teenage Driver Involved", TEENAGE_DRIVER_INVOLVED);
+
+            var Bicycle = _repo.Crashes.Where(x => x.BICYCLIST_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Bicyclist Involved", Bicycle);
+
+            var Work = _repo.Crashes.Where(x => x.WORK_ZONE_RELATED == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
+            Counts.Add("Work Zone Related", Work);
+
+            var Ped = _repo.Crashes.Where(x => x.PEDESTRIAN_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Pedestrian Involved", Ped);
+
+            var Moto = _repo.Crashes.Where(x => x.MOTORCYCLE_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Motorcyclist Involved", Moto);
+
+            var Imp = _repo.Crashes.Where(x => x.IMPROPER_RESTRAINT == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
+            Counts.Add("Improper Restraint", Imp);
+            
+            var Unrest = _repo.Crashes.Where(x => x.UNRESTRAINED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Unrestrained", Unrest);
+
+            var Inter = _repo.Crashes.Where(x => x.INTERSECTION_RELATED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Intersection Related", Inter);
+
+            var Wild = _repo.Crashes.Where(x => x.WILD_ANIMAL_RELATED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Wild Animal Related", Wild);
+
+            var Domestic = _repo.Crashes.Where(x => x.DOMESTIC_ANIMAL_RELATED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Domestic Animal Related", Domestic);
+
+            var Over = _repo.Crashes.Where(x => x.OVERTURN_ROLLOVER == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
+            Counts.Add("Overturn/Rollover", Over);
+
+            var Com = _repo.Crashes.Where(x => x.COMMERCIAL_MOTOR_VEH_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Commercial Motor Vehicle Involved", Ped);
+
+            var Old = _repo.Crashes.Where(x => x.OLDER_DRIVER_INVOLVED == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Older Driver Involved", Old);
+
+            var Dark = _repo.Crashes.Where(x => x.NIGHT_DARK_CONDITION == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
+            Counts.Add("Night/Dark Conditions", Dark);
+
+            var Single = _repo.Crashes.Where(x => x.SINGLE_VEHICLE == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Single Vehicle", Single);
+
+            var Dist = _repo.Crashes.Where(x => x.DISTRACTED_DRIVING == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Distracted Driving", Dist);
+
+            var Drow = _repo.Crashes.Where(x => x.DROWSY_DRIVING == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Drowsy Driving", Drow);
+
+            var Roadway = _repo.Crashes.Where(x => x.ROADWAY_DEPARTURE == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+            Counts.Add("Roadway Departure", Roadway);
+
+            return View("DataView", Counts);
+        }
+
     }
 }
