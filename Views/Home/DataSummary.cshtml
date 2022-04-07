@@ -39,8 +39,8 @@
                     <td>@c.ROUTE</td>
                     <td>@c.MILEPOINT</td>
                     <td>@c.LAT_UTM_Y, @c.LONG_UTM_X</td>
-                    @*<td><a asp-controller="Home" asp-action="Edit" asp-route-BowlerID="@b.BowlerID">Edit</a></td>
-                        <td><a asp-controller="Home" asp-action="Delete" asp-route-BowlerID="@b.BowlerID">Delete</a></td>*@
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@c.CRASH_ID">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@c.CRASH_ID">Delete</a></td>
                 </tr>
                 }
             </tbody>
