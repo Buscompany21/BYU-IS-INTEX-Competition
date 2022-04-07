@@ -8,6 +8,8 @@ namespace INTEX2.Models.ViewModels
     public class CrashesViewModel
     {
         public IQueryable<Crash> Crashes { get; set; }
+
+        public IQueryable<Crash> CrashTest { get; set; }
         public PageInfo PageInfo { get; set; }
     }
 }

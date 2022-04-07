@@ -65,7 +65,7 @@ namespace INTEX2.Infrastructure
                     tb.AddCssClass(PageModel.CurrentPage-1 == PageModel.CurrentPage
                         ? PageClassSelected : PageClassNormal);
                 }
-                tb.InnerHtml.Append((PageModel.CurrentPage-1).ToString());
+                tb.InnerHtml.Append("...".ToString());
 
                 final.InnerHtml.AppendHtml(tb);
             }
@@ -74,7 +74,7 @@ namespace INTEX2.Infrastructure
             {
                 TagBuilder tb = new TagBuilder("a");
 
-                if (i == PageModel.CurrentPage + 5)
+                if (i == PageModel.CurrentPage + 4)
                 {
                     break;
                 }
@@ -89,6 +89,21 @@ namespace INTEX2.Infrastructure
                 }
 
                 tb.InnerHtml.Append(i.ToString());
+
+                final.InnerHtml.AppendHtml(tb);
+            }
+
+            if (PageModel.CurrentPage + 4 < PageModel.TotalPages)
+            {
+                TagBuilder tb = new TagBuilder("a");
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = PageModel.CurrentPage+4 });
+                if (PageClassesEnabled)
+                {
+                    tb.AddCssClass(PageClass);
+                    tb.AddCssClass(PageModel.CurrentPage+4 == PageModel.CurrentPage
+                        ? PageClassSelected : PageClassNormal);
+                }
+                tb.InnerHtml.Append("...".ToString());
 
                 final.InnerHtml.AppendHtml(tb);
             }

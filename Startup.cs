@@ -19,8 +19,8 @@ namespace INTEX2
 {
     public class Startup
     {
-        private string _IntexDbConnection = null;
-        private string _ApplicationDbConnection = null;
+        //private string _IntexDbConnection = null;
+        //private string _ApplicationDbConnection = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,18 +31,19 @@ namespace INTEX2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            _IntexDbConnection = Configuration["IntexDbConnection"];
-            _ApplicationDbConnection = Configuration["ApplicationDbConnection"];
+            //_IntexDbConnection = Configuration["IntexDbConnection"];
+            //_ApplicationDbConnection = Configuration["ApplicationDbConnection"];
+            
             services.AddDbContext<IntexDbContext>(options =>
             {
-                options.UseMySql(_IntexDbConnection);
+                options.UseMySql(Configuration["ConnectionStrings:IntexDbConnection"]);
             });
 
             //Uncomment this in just a moment
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(_ApplicationDbConnection);
+                options.UseMySql(Configuration["ConnectionStrings:ApplicationDbConnection"]);
             });
 
             //services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -52,7 +53,7 @@ namespace INTEX2
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSingleton<InferenceSession>(
-            new InferenceSession("Models/best_clf_model.onnx")
+            new InferenceSession("wwwroot/best_clf_model.onnx")
             );
 
             services.AddScoped<ICrashesRepository, EFCrashesRepository>();
@@ -91,15 +92,15 @@ namespace INTEX2
                     pattern: "{COUNTY_NAME}/Page{pageNum}",
                     defaults: new { Controller = "Home", action = "DataSummary" });
 
-                endpoints.MapControllerRoute(
-                    name: "severitypage",
-                    pattern: "Page{pageNum}/Severity{CRASH_SEVERITY_ID}",
-                    defaults: new { Controller = "Home", action = "DataSummary", });
+                //endpoints.MapControllerRoute(
+                //    name: "severitypage",
+                //    pattern: "Page{pageNum}/Severity{CRASH_SEVERITY_ID}",
+                //    defaults: new { Controller = "Home", action = "DataSummary", COUNTY_NAME = ""});
 
-                endpoints.MapControllerRoute(
-                    name: "severitypage",
-                    pattern: "Severity{CRASH_SEVERITY_ID}/Page{pageNum}",
-                    defaults: new { Controller = "Home", action = "DataSummary", });
+                //endpoints.MapControllerRoute(
+                //    name: "severitypage2",
+                //    pattern: "{CRASH_SEVERITY_ID}/Page{pageNum}",
+                //    defaults: new { Controller = "Home", action = "DataSummary" });
 
                 endpoints.MapControllerRoute(
                     name: "Paging",
@@ -111,10 +112,10 @@ namespace INTEX2
                     pattern: "County{COUNTY_NAME}",
                     defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
 
-                endpoints.MapControllerRoute(
-                    name: "severity",
-                    pattern: "Severity{CRASH_SEVERITY_ID}",
-                    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
+                //endpoints.MapControllerRoute(
+                //    name: "severity",
+                //    pattern: "Severity{CRASH_SEVERITY_ID}",
+                //    defaults: new { Controller = "Home", action = "DataSummary", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
 

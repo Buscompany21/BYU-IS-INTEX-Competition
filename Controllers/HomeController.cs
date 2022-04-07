@@ -66,26 +66,91 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult DataSummary(string CRASH_SEVERITY_ID, string COUNTY_NAME, int pageNum = 1)
+        //[HttpGet]
+        //public IActionResult Test(int pageNum = 1)
+        //{
+        //    int pageSize = 50;
+
+        //    var yeet = new CrashesViewModel
+        //    {
+        //        CrashTest = _repo.Crashes,
+
+        //        Crashes = _repo.Crashes
+        //        .Skip((pageNum - 1) * pageSize)
+        //        .Take(pageSize),
+
+        //        PageInfo = new PageInfo
+        //        {
+        //            TotalNumCrashes = _repo.Crashes.Count(),
+
+        //            CrashesPerPage = pageSize,
+        //            CurrentPage = pageNum
+        //        }
+        //    };
+        //    return View(yeet);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Test(string city, string county, string why, int pageNum = 1)
+        //{
+        //    int pageSize = 50;
+
+        //    var yeet = new CrashesViewModel
+        //    {
+        //        CrashTest = _repo.Crashes,
+
+        //        Crashes = _repo.Crashes
+        //        .Where(p => p.CITY == city)
+        //        .Where(p => p.COUNTY_NAME == county)
+        //        .Skip((pageNum - 1) * pageSize)
+        //        .Take(pageSize),
+
+        //        PageInfo = new PageInfo
+        //        {
+        //            TotalNumCrashes = (
+        //                county == null & city == null
+        //                    ? _repo.Crashes.Count()
+        //                    : _repo.Crashes.Where(x => x.COUNTY_NAME == county || county == null)
+        //                    .Where(x => x.CITY == city || city == null).Count()),
+
+        //            CrashesPerPage = pageSize,
+        //            CurrentPage = pageNum
+        //        }
+        //    };
+        //    return View(yeet);
+        //}
+
+        public IActionResult DataSummary(string cRASH_SEVERITY_ID, string cOUNTY_NAME, int pageNum = 1)
         {
 
-            int pageSize = 50;
+            int pageSize = 25;
 
             var yeet = new CrashesViewModel
             {
+
                 Crashes = _repo.Crashes
-                .Where(p => p.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null)
-                .Where(p => p.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
+                .Where(p => p.COUNTY_NAME != "")
+                .Where(p => p.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                .Where(p => p.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null)
+                
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes =
-                        (COUNTY_NAME == null & CRASH_SEVERITY_ID == null
-                            ? _repo.Crashes.Count()
-                            : _repo.Crashes.Where(x => x.COUNTY_NAME == COUNTY_NAME || COUNTY_NAME == null)
-                            .Where(x => x.CRASH_SEVERITY_ID == CRASH_SEVERITY_ID || CRASH_SEVERITY_ID == null).Count()),
+
+                    TotalNumCrashes = 
+                        (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                            ? _repo.Crashes.Count() 
+                            : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                            .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+
+                    //TotalNumCrashes =
+                    //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                    //        ? _repo.Crashes.Count()
+                    //        : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                    //        .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+
 
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
