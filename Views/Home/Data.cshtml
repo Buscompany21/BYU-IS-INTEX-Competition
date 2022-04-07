@@ -5,9 +5,50 @@
 }
 
 <form method="post">
-    <button name="severity" value="1" type="submit">1</button>
-    <button name="severity" value="2" type="submit">2</button>
-    <button name="severity" value="3" type="submit">3</button>
-    <button name="severity" value="4" type="submit">4</button>
-    <button name="severity" value="5" type="submit">5</button>
+    <h1 class="display-1 mb-4">Severity Scores</h1>
+
+    <div class="card-deck">
+
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h4 class="card-title">1 - No Injury</h4>
+                @*<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>*@
+                
+            </div>
+            <div class="card-footer align-self-center"><button name="severity" value="1" type="submit" class="btn bg-light">Results</button></div>
+        </div>
+
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h4 class="card-title">2 - Possible Injury</h4>
+                @*<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>*@
+            </div>
+            <div class="card-footer align-self-center"><button name="severity" value="2" type="submit" class="btn bg-light">Results</button></div>
+        </div>
+
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h4 class="card-title">3 - Suspected Minor Injury</h4>
+                @*<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>*@ 
+            </div>
+            <div class="card-footer align-self-center"><button name="severity" value="3" type="submit" class="btn bg-light">Results</button></div>
+        </div>
+
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h4 class="card-title">4 - Suspected Serious Injury</h4>
+                @*<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>*@    
+            </div>
+            <div class="card-footer align-self-center"><button name="severity" value="4" type="submit" class="btn bg-light">Results</button></div>
+        </div>
+
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h4 class="card-title">5 - Fatal</h4>
+                @*<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>*@      
+            </div>
+            <div class="card-footer align-self-center"><button name="severity" value="5" type="submit" class="btn bg-light">Results</button></div>
+        </div>
+    </div>
+
 </form>
