@@ -3,14 +3,14 @@
 }
 
 @model CrashesViewModel
-
+<link href="~/css/site - Copy.css" rel="stylesheet" />
 <div class="row">
     <div class="col-10">
         <h1>Crash Data</h1>
     </div>
     <div class="col">
         <button class="btn btn-primary">
-            <a asp-for="Home" asp-action="DataSummary" style="color:white">Table View</a>
+            <a asp-for="Home" asp-action="DataSummary" class="cole">Table View</a>
         </button>
     </div>
 </div>
@@ -32,7 +32,7 @@
                 if (iCount < 12)
                 {
                     <div class="col-md-6 mb-3">
-                        <div class="card border-warning mb-3" style="max-width: 30rem;">
+                        <div class="card border-warning mb-3 btncolewidth" >
                             @if (c.CRASH_SEVERITY_ID == "1")
                             {
                                 <div class="bg-success p-1">
@@ -81,8 +81,8 @@
 
                             </div>
 
-                            <button class="btn btn bg-primary" style="margin-left:125px; margin-right:125px">
-                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" style="color:white">View Details</a>
+                            <button class="btn btn bg-primary bigbtncole" >
+                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" class="cole">View Details</a>
                             </button>
 
                         </div>
@@ -92,7 +92,7 @@
                 if (iCount > 12)
                 {
                     <div class="col-md-6 mb-3">
-                        <div class="card border-warning mb-3" style="max-width: 30rem;">
+                        <div class="card border-warning mb-3 btncolewidth">
                             @if (c.CRASH_SEVERITY_ID == "1")
                             {
                                 <div class="bg-success p-1">
@@ -141,8 +141,8 @@
 
                             </div>
 
-                            <button class="btn btn bg-primary" style="margin-left:125px; margin-right:125px">
-                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" style="color:white">View Details</a>
+                            <button class="btn btn bg-primary bigbtncole">
+                                <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" class="cole">View Details</a>
                             </button>
 
                         </div>
