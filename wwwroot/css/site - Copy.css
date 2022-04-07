@@ -86,3 +86,7 @@ input:checked + .slider:before {
 .boxfit {
    width: fit-content;
 }
+
+.floatInputs{
+    float: right;
+}
