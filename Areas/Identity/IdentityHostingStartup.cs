@@ -1,5 +1,6 @@
 ﻿using System;
 using INTEX2.Data;
+using INTEX2.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -18,7 +19,8 @@ namespace INTEX2.Areas.Identity
 
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseMySql(context.Configuration["ConnectionStrings:ApplicationDbConnection"]);
+                    //options.UseMySql(context.Configuration["ConnectionStrings:ApplicationDbConnection"]);
+                    options.UseMySql(DbSecret.GetRDSConnectionString());
                 });
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
