@@ -59,7 +59,16 @@ namespace INTEX2
             services.AddScoped<ICrashesRepository, EFCrashesRepository>();
             //services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<IntexDbContext>().AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 10;
+                options.Password.RequiredUniqueChars = 1;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
