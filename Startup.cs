@@ -36,14 +36,14 @@ namespace INTEX2
             
             services.AddDbContext<IntexDbContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:IntexDbConnection"]);
+                options.UseMySql(DbSecret.GetRDSConnectionString());
             });
 
             //Uncomment this in just a moment
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:ApplicationDbConnection"]);
+                options.UseMySql(DbSecret.GetRDSConnectionString());
             });
 
             //services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Data Summary Grid";
+}
+
+@model CrashesViewModel
+
+
+<h1>Crash Data</h1>
+
+<div class="row m-1 p-1">
+
+    <!--Left Section of Page-->
+    <div id="types" class="col-2">
+        @*<vc:county></vc:county>*@
+        @*Put  form here*@
+    </div>
+
+
+    <!--Right Section of Page-->
+
+    <div class="col-10">
+
+        @foreach (var c in Model.Crashes.ToList())
+        {
+            int iCount = 0;
+
+            <!--start column-->
+
+
+
+            iCount++;
+            @if (iCount < 13)
+            {
+                <div class="col-6 m-3">
+                    <!--Start Card-->
+                    <div class="card card-outline-primary m-1 p-1">
+                        <div class="bg-light p-1">
+                            <h4 class="display-6">@c.CRASH_ID</h4>
+                        </div>
+
+
+                        <div class="flex-sm-row">
+                            <div>
+                                <ul>
+                                    <li>County: @c.COUNTY_NAME</li>
+                                    <li>City: @c.CITY</li>
+                                    <li>Road: @c.MAIN_ROAD_NAME</li>
+                                    <li>Route: @c.ROUTE</li>
+                                    <li>Milepoint: @c.MILEPOINT</li>
+                                    <li>Coordinates: @c.LAT_UTM_Y, @c.LONG_UTM_X</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="card-body">
+                                    <h1 class="display-4">@c.CRASH_SEVERITY_ID</h1>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <span class="badge bg-info" style="float:right">
+                            Price: @c.CRASH_SEVERITY_ID
+                        </span>
+                    </div>
+                    <!--End-->
+
+                </div>
+            }
+            @if (iCount >= 13)
+            {
+                <div class="col-6 m-3">
+                    <!--Start Card-->
+                    <div class="card card-outline-primary m-1 p-1">
+                        <div class="bg-light p-1">
+                            <h4 class="display-6">@c.CRASH_ID</h4>
+                        </div>
+
+
+                        <div class="flex-sm-row">
+                            <div>
+                                <ul>
+                                    <li>County: @c.COUNTY_NAME</li>
+                                    <li>City: @c.CITY</li>
+                                    <li>Road: @c.MAIN_ROAD_NAME</li>
+                                    <li>Route: @c.ROUTE</li>
+                                    <li>Milepoint: @c.MILEPOINT</li>
+                                    <li>Coordinates: @c.LAT_UTM_Y, @c.LONG_UTM_X</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="card-body">
+                                    <h1 class="display-4">@c.CRASH_SEVERITY_ID</h1>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <span class="badge bg-info" style="float:right">
+                            Price: @c.CRASH_SEVERITY_ID
+                        </span>
+                    </div>
+                    <!--End-->
+
+                </div>
+            }
+        }
+    </div>
+
+</div>
+
+
+
+@*Pagination at the bottom of the page*@
+<div page-model="@Model.PageInfo" page-action="DataSummary" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+     class="btn-group pull-right m-1"></div>
