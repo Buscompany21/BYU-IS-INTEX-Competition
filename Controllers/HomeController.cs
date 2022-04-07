@@ -123,7 +123,7 @@ namespace INTEX2.Controllers
         public IActionResult DataSummary(string cRASH_SEVERITY_ID, string cOUNTY_NAME, int pageNum = 1)
         {
 
-            int pageSize = 25;
+            int pageSize = 24;
 
             var yeet = new CrashesViewModel
             {
