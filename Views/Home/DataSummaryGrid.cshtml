@@ -20,7 +20,7 @@
 <div class="row m-1 p-1">
 
     <!--Left Section of Page-->
-    <div id="types" class="col-4">
+    <div id="types" class="col-3">
 
         @*<vc:county></vc:county>*@
         <form method="post">
@@ -67,143 +67,185 @@
                     </select>
                 </div><br />
             </div>
-
-            <div>
-                <!-- Rounded switch -->
-                <label for="wz">Work Zone?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="wz">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="pi">Pedestrian?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="pi">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="bi">Bicyclist?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="bi">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-
-            <div>
-                <!-- Rounded switch -->
-                <label for="mi">Motorcycle?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="mi">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="ir">Improper Restraints?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="ir">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="ur">No Restraints?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="ur">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-            <div>
-                <!-- Rounded switch -->
-                <label for="DUI">DUI?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="DUI">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="inRel">Intersection?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="inRel">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="wiRel">Wild Animal?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="wiRel">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-            <div>
-                <!-- Rounded switch -->
-                <label for="overRel">Overturn Rollover?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="overRel">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="domRel">Domestic Animal?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="domRel">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="comInv">Commercial Vehicle?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="comInv">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-
-            <div>
-                <!-- Rounded switch -->
-                <label for="oldInv">Driver 55+?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="oldInv">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="teenInv">Driver Teenager?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="teenInv">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="ndCond">During Evening?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="ndCond">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-            <div>
-                <!-- Rounded switch -->
-                <label for="sinVeh">Single Vehicle?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="sinVeh">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="disDriv">Distracted Driving?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="disDriv">
-                    <span class="slider round"></span>
-                </label><br />
-
-                <label for="drowDriv">Drowsy Driving?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="drowDriv">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-            <div>
-                <label for="roadDep">Roadway Departure?:</label>
-                <label class="switch">
-                    <input type="checkbox" name="roadDep">
-                    <span class="slider round"></span>
-                </label><br />
-            </div>
-
+            <table>
+                <tr>
+                    <td><label for="wz">Work Zone:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="wz">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="pi">Pedestrian:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="pi">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="bi">Bicyclist:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="bi">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="mi">Motorcycle:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="mi">
+                            <span class="slider round"></span>
+                        </label><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ir">Improper Restraints:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="ir">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ur">No Restraints:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="ur">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="DUI">DUI:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="DUI">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="inRel">Intersection:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="inRel">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="wiRel">Wild Animal:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="wiRel">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="overRel">Overturn Rollover:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="overRel">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="domRel">Domestic Animal:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="domRel">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="comInv">Commercial Vehicle:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="comInv">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="oldInv">Driver 55+:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="oldInv">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="teenInv">Driver Teenager:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="teenInv">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ndCond">During Evening:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="ndCond">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="sinVeh">Single Vehicle:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="sinVeh">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="disDriv">Distracted Driving:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="disDriv">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="drowDriv">Drowsy Driving:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="drowDriv">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="roadDep">Roadway Departure:</label></td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="roadDep">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+            </table>
             <button class="btn btn bg-primary" type="submit"><span class="whiteTextColor">Submit Crash Data</span></button>
 
 
         </form>
     </div>
-    <div class="col-8">
+    <div class="col-9">
         <div class="row">
             @{ int iCount = 0;}
             @foreach (var c in Model.Crashes)
