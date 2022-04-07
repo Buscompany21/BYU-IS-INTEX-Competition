@@ -81,6 +81,12 @@ body {
     max-width: 1400px !important;}
 }
 
+@media (min-width: 1200px) {
+.containertest {
+    max-width: 1400px !important;
+}
+}
+
 .d-grid {
     display: grid !important;
 }
