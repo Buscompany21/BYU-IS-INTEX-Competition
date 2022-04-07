@@ -5,7 +5,10 @@
     <UserSecretsId>aspnet-INTEX2-00774B9F-CE16-4B72-96CA-E237D113C552</UserSecretsId>
   </PropertyGroup>
 
+
+
   <ItemGroup>
+    <PackageReference Include="AWSSDK.SecretsManager.Caching" Version="1.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.21" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.23" />
