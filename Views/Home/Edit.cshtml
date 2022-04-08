@@ -1,14 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Edit";
 }
 
 
@@ -23,7 +14,7 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
 
-        <input type="hidden" asp-for="CRASH_ID" value="@Model.CRASH_ID"/>
+        <input type="hidden" asp-for="CRASH_ID" value="@Model.CRASH_ID" />
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label asp-for="CRASH_DATETIME">Crash Date and Time</label>
