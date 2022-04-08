@@ -110,13 +110,13 @@ namespace INTEX2
 
                 context.Response.Headers.Add(
                 "Content-Security-Policy",
-                "default-src 'self' 'unsafe-inline' https://app.termly.io/; " +
+                "default-src 'self' 'unsafe-inline' https://app.termly.io/ https://www.youtube.com/; " +
                 "script-src-elem 'self'   https://app.termly.io/ https://app.termly.io/embed.min.js https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js https://app.termly.io/299.embed.min.js https://app.termly.io/531.embed.min.js https://zerofatalities.com/wp-content/uploads/2020/11/zero-logo@2x-8.png https://pbs.twimg.com/profile_images/568447784525647872/kQ_uH5TR_400x400.jpeg " +
                 "style-src-elem 'self' ; " +
                 "img-src 'self' https://zerofatalities.com/wp-content/uploads/2020/11/zero-logo@2x-8.png https://pbs.twimg.com/media/EhC9XQOWoAAP5KM.jpg; " +
-                "font-src 'self'" +
+                "font-src 'self';" +
                 "media-src 'self'" +
-                "frame-src 'self'" +
+                "frame-src 'self' https://www.youtube.com/;" +
                 "connect-src  https://app.termly.io/api/v1/snippets/websites/bd768242-0caf-4596-be95-3d56795fa394 https://app.termly.io/"
 
                 );
