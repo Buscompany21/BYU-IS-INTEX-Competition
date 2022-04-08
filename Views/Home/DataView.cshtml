@@ -6,34 +6,49 @@
 
 @model Dictionary<string, float>
 
-@*<div>
-    @foreach (KeyValuePair<string, float> count in Model.OrderByDescending(x => x.Value))
-            {
-                <a>@count.Key - @count.Value</a><br />
-            }
-</div>*@
+<h1 class="display-1 text-center mb-4">Causes of Crash Severity @ViewBag.Severity</h1>
 
-<div class="ml-lg-5 mr-lg-5 pl-lg-5 pr-lg-5">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Cause</th>
-                <th>Count</th>
-            </tr>
-        </thead>
-        @foreach (KeyValuePair<string, float> count in Model.OrderByDescending(x => x.Value))
-        { 
-        
-            <tr>
-                <td>
-                    @count.Key
-                </td>
+<div class="row">
+    <div class="col-10">
+        <div class="ml-lg-5 pl-lg-5">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Cause</th>
+                        <th>Count</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                @foreach (KeyValuePair<string, float> count in Model.OrderByDescending(x => x.Value))
+                {
 
-                <td>
-                    @{ float total = (count.Value/ViewBag.Total); }@total %
-                </td>
-            </tr>
-        }
-    </table>
+                    <tr>
+                        <td>
+                            @count.Key
+                        </td>
+
+                        <td>
+                            @count.Value
+                        </td>
+
+                        <td data-toggle="tooltip" data-placement="right" title="% of crashes associated with @count.Key">
+                            @{ float total = (count.Value / ViewBag.Total); total = (int)(Math.Round(total, 2) * 100); }@total%
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="card">
+            <div class="card-body">
+                @*<h4 class="card-title">Explanation</h4>*@
+                <p class="card-text">
+                    Percent of severity @ViewBag.Severity crashes reported to involve the causal factor
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div class="mb-5"></div>

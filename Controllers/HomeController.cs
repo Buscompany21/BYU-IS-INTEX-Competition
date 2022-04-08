@@ -740,12 +740,8 @@ namespace INTEX2.Controllers
 
             float categoryTotal = _repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
 
-            /*float total = 0;
-            foreach (KeyValuePair<string, float> pair in Counts)
-            {
-                total = total + pair.Value;
-            }*/
             ViewBag.Total = categoryTotal;
+            ViewBag.Severity = severity;
 
             return View("DataView", Counts);
         }
