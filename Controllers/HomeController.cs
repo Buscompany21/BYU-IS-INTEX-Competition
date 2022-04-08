@@ -321,10 +321,28 @@ namespace INTEX2.Controllers
                 {
 
                     TotalNumCrashes =
-                        (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
-                            ? _repo.Crashes.Count()
-                            : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
-                            .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+                        _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                            .Where(x => x.CITY == cityName || cityName == null)
+                            .Where(x => x.CRASH_SEVERITY_ID == severityId || severityId == null)
+                            .Where(x => x.WORK_ZONE_RELATED == wz || wz == null)
+                            .Where(x => x.PEDESTRIAN_INVOLVED == pi || pi == null)
+                            .Where(x => x.BICYCLIST_INVOLVED == bi || bi == null)
+                            .Where(x => x.MOTORCYCLE_INVOLVED == mi || mi == null)
+                            .Where(x => x.IMPROPER_RESTRAINT == ir || ir == null)
+                            .Where(x => x.UNRESTRAINED == ur || ur == null)
+                            .Where(x => x.DUI == DUI || DUI == null)
+                            .Where(x => x.INTERSECTION_RELATED == inRel || inRel == null)
+                            .Where(x => x.WILD_ANIMAL_RELATED == wiRel || wiRel == null)
+                            .Where(x => x.OVERTURN_ROLLOVER == overRel || overRel == null)
+                            .Where(x => x.DOMESTIC_ANIMAL_RELATED == domRel || domRel == null)
+                            .Where(x => x.COMMERCIAL_MOTOR_VEH_INVOLVED == comInv || comInv == null)
+                            .Where(x => x.OLDER_DRIVER_INVOLVED == oldInv || oldInv == null)
+                            .Where(x => x.TEENAGE_DRIVER_INVOLVED == teenInv || teenInv == null)
+                            .Where(x => x.NIGHT_DARK_CONDITION == ndCond || ndCond == null)
+                            .Where(x => x.SINGLE_VEHICLE == sinVeh || sinVeh == null)
+                            .Where(x => x.DISTRACTED_DRIVING == disDriv || disDriv == null)
+                            .Where(x => x.DROWSY_DRIVING == drowDriv || drowDriv == null)
+                            .Where(x => x.ROADWAY_DEPARTURE == roadDep || roadDep == null).Count(),
 
                     //TotalNumCrashes =
                     //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
