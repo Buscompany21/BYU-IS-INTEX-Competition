@@ -3,6 +3,11 @@
 }
 
 
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
 <head>
     <link href="~/css/metro-all.min.css" rel="stylesheet" />
 </head>
@@ -12,56 +17,130 @@
             src="https://app.termly.io/embed.min.js"
             data-auto-block="on"
             data-website-uuid="bd768242-0caf-4596-be95-3d56795fa394"></script>
-    <div class="container">
-        <div class="row">
-            <div class="col text-center font-weight-bold">
-                <h1>
-                    UTAH CRASH DATA
-                </h1>
-            </div>
 
-        </div>
-    </div>
-    <br />
+    <style>
+        .container1 {
+            position: relative;
+            width: 100%;
+        }
+
+        /* blurring the image */
+        .gfg {
+            filter: blur(5px);
+            width: 100%;
+        }
+
+        .gfg2 {
+            width: 100%;
+        }
+
+        /* designing title and tag line */
+
+
+        .logo {
+            text-align: center;
+            max-width: 35%;
+            position: absolute;
+            font-size: 20px;
+            top: 35%;
+            left: 35%;
+            color: white;
+        }
+
+        .logo2 {
+            text-align: center;
+            position: absolute;
+            max-width: 100%;
+            font-size: 20px;
+            top: 0%;
+            left: 0%;
+            color: black;
+        }
+
+        h1, p {
+            border: 4px solid white;
+            padding: 10px 50px;
+            position: relative;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .background {
+            background-color: black;
+        }
+
+        h1:hover {
+            /*background-color: red;*/
+            /*-webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;*/
+        }
+
+        /* Designing button */
+        .logo button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 10px 25px;
+            color: black;
+            background-color: #ddd;
+            text-align: center;
+            cursor: pointer
+        }
+
+            .logo button:hover {
+                background-color: red;
+                color: white;
+            }
+
+        .logo2 button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 10px 25px;
+            color: black;
+            background-color: #ddd;
+            text-align: center;
+            cursor: pointer
+        }
+
+            .logo2 button:hover {
+                background-color: red;
+                color: white;
+            }
+        /*#my-div {
+            margin: 0 auto;
+            width: 80%;
+            height: 50%;
+        }*/
+
+    </style>
+
     <div class="container">
         <div class="row">
-            <div class="img-container">
-                <img src="~/img/accident.jpg" width="300" />
-                <div class="image-overlay op-darkRed text-left">
-                    <h1 class="text-black-50 font-weight-bold">
-                        *Insert Text*
-                    </h1>
+            <div class="container1 containertest">
+
+                <img class="gfg " src="~/img/nighthighway3.jpg" />
+                <!-- title and tag line with button -->
+                <div class="logo">
+
+                    <h1 class="background">Utah Crash Data</h1>
+
+
+                    <p class="background">Driving Understanding and Prevention</p>
+
+
+                    <button>See the Data</button>
                 </div>
             </div>
-        </div>
-    </div>
-    <br />
-    <div class="container">
-        <div class="row">
 
         </div>
+
+        <!-- background image -->
+
+        <br /><br />
+        <br /><br />
     </div>
-    <br />
-    <div class="container">
-        <div class="row">
 
-            <div class="col-1"></div>
-            <div data-role="tile" data-size="wide" class="col bg-red">
-                <img src="~/img/database.jpg" class="icon" />
-                <span class="branding-bar">See the Data</span>
-            </div>
-
-            <div class="col-1"></div>
-
-            <div data-role="tile" data-size="wide" class="col bg-red">
-                <img src="~/img/admin.jpg" class="icon" />
-                <span class="branding-bar">Admin Login</span>
-            </div>
-
-            <div class="col-1"></div>
-        </div>
-    </div>
-    <br />
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -107,28 +186,50 @@
             </div>
         </div>
     </div>
-    <br />
-    <br />
+    <!--<div class="col-8">
+    <div class="container1">
+
+        <img class="gfg2" src="~/img/lehi2.jpeg" />-->
+    <!-- title and tag line with button -->
+    <!--</div>
+    </div>
+    <div class="col-4">
+        <p>
+            The Utah Department of Transportation, concerned lawmakers, and advocates have noticed the
+            alarming increase of motor vehicle accidents and deaths in Utah.
+            We aim to empower public servants and concerned citizens throughout the state of Utah to be
+            better informed about how to make our streets, highways, and freeways safer.
+        </p>
+        <div class="text-center"><button class="btn btn-secondary">Crash Severity Trends</button></div>
+    </div>
+              </div>-->
+
+    <br /><br /><br /><br />
+
 </body>
 
 
 
-    
-    
 
 
-    @*<div class="tiles-grid">
-            <div data-role="tile" data-size="small"></div>
-            <div data-role="tile" data-size="small"></div>
-            <div data-role="tile" data-size="small" class="col-1 row-2"></div>
-            <div data-role="tile" data-size="small" class="col-2 row-2"></div>
-            <div data-role="tile" data-size="medium"></div>
-            <div data-role="tile" data-size="wide"></div>
-            <div data-role="tile" data-size="large"></div>
-            <div data-role="tile" data-size="medium"></div>
-            <div data-role="tile" data-size="medium"></div>
-            <div data-role="tile" data-size="wide"></div>
-        </div>*@
 
-   
+
+
+
+
+
+@*<div class="tiles-grid">
+        <div data-role="tile" data-size="small"></div>
+        <div data-role="tile" data-size="small"></div>
+        <div data-role="tile" data-size="small" class="col-1 row-2"></div>
+        <div data-role="tile" data-size="small" class="col-2 row-2"></div>
+        <div data-role="tile" data-size="medium"></div>
+        <div data-role="tile" data-size="wide"></div>
+        <div data-role="tile" data-size="large"></div>
+        <div data-role="tile" data-size="medium"></div>
+        <div data-role="tile" data-size="medium"></div>
+        <div data-role="tile" data-size="wide"></div>
+    </div>*@
+
+
 
