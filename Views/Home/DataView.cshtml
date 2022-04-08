@@ -6,9 +6,34 @@
 
 @model Dictionary<string, float>
 
-<div>
+@*<div>
     @foreach (KeyValuePair<string, float> count in Model.OrderByDescending(x => x.Value))
             {
                 <a>@count.Key - @count.Value</a><br />
             }
+</div>*@
+
+<div class="ml-lg-5 mr-lg-5 pl-lg-5 pr-lg-5">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Cause</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        @foreach (KeyValuePair<string, float> count in Model.OrderByDescending(x => x.Value))
+        { 
+        
+            <tr>
+                <td>
+                    @count.Key
+                </td>
+
+                <td>
+                    @{ float total = (count.Value/ViewBag.Total); }@total %
+                </td>
+            </tr>
+        }
+    </table>
 </div>
+<div class="mb-5"></div>

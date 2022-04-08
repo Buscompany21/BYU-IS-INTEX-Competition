@@ -675,6 +675,7 @@ namespace INTEX2.Controllers
         {
             Dictionary<string, float> Counts = new Dictionary<string, float>();
 
+
             var Dui = _repo.Crashes.Where(x => x.DUI == "true").Where(x => x.CRASH_SEVERITY_ID == severity).Count();
             Counts.Add("DUI", Dui);
 
@@ -736,6 +737,15 @@ namespace INTEX2.Controllers
 
             var Roadway = _repo.Crashes.Where(x => x.ROADWAY_DEPARTURE == "true").Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
             Counts.Add("Roadway Departure", Roadway);
+
+            float categoryTotal = _repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == severity.ToString()).Count();
+
+            /*float total = 0;
+            foreach (KeyValuePair<string, float> pair in Counts)
+            {
+                total = total + pair.Value;
+            }*/
+            ViewBag.Total = categoryTotal;
 
             return View("DataView", Counts);
         }
