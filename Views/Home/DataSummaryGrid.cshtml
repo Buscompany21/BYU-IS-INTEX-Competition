@@ -23,15 +23,20 @@
     <div id="types" class="col-3">
 
         @*<vc:county></vc:county>*@
-        <form method="post">
+        <form method="post" id="theyAreDumb">
+            <input type="hidden" value="true" name="Submitted" />
             <div>
                 <div class="boxfit">
                     <label>City</label><br />
-                    <select name="cityName">
-                        <option disabled selected value=""> -- select a city-- </option>
+                    <select name="cityName" value="@ViewBag.cityName">
+                        <option value=""> -- select a city-- </option>
                         @foreach (string c in ViewBag.CITY)
                         {
-                            @if ((@c != "") || (@c != "***  ERROR  ***"))
+                            @if (ViewBag.cityName == c)
+                            {
+                                <option selected value="@c">@c</option>
+                            }
+                            else
                             {
                                 <option value="@c">@c</option>
                             }
@@ -41,11 +46,15 @@
 
                 <div class="boxfit">
                     <label>County</label><br />
-                    <select name="countyName">
-                        <option disabled selected value=""> -- select a county -- </option>
+                    <select name="countyName" value="@ViewBag.countyName">
+                        <option value=""> -- select a county -- </option>
                         @foreach (string c in ViewBag.COUNTY_NAME)
                         {
-                            @if (@c != "")
+                            @if (ViewBag.countyName == c)
+                            {
+                                <option selected value="@c">@c</option>
+                            }
+                            else
                             {
                                 <option value="@c">@c</option>
                             }
@@ -57,13 +66,47 @@
                 <div class="boxfit">
                     <label>Crash Severity:</label><br />
                     <select name="severityId">
-                        <option disabled selected value=""> -- select crash severity -- </option>
-                        <option value="1"> 1 - No Injury </option>
-                        <option value="2"> 2 - Possible Injury </option>
-                        <option value="3"> 3 - Suspected Minor Injury </option>
-                        <option value="4"> 4 - Suspected Serious Injury </option>
-                        <option value="5"> 5 - Fatal </option>
-
+                        <option value=""> -- select crash severity -- </option>
+                        @if (ViewBag.severityId == "1")
+                        {
+                            <option selected value="1"> 1 - No Injury </option>
+                        }
+                        else
+                        {
+                            <option value="1"> 1 - No Injury </option>
+                        }
+                        @if (ViewBag.severityId == "2")
+                        {
+                            <option selected value="2"> 2 - Possible Injury </option>
+                        }
+                        else
+                        {
+                            <option value="2"> 2 - Possible Injury </option>
+                        }
+                        @if (ViewBag.severityId == "3")
+                        {
+                            <option selected value="3"> 3 - Suspected Minor Injury </option>
+                        }
+                        else
+                        {
+                            <option value="3"> 3 - Suspected Minor Injury </option>
+                        }
+                        @if (ViewBag.severityId == "4")
+                        {
+                            <option selected value="4"> 4 - Suspected Serious Injury </option>
+                        }
+                        else
+                        {
+                            <option value="4"> 4 - Suspected Serious Injury </option>
+                        }
+                        @if (ViewBag.severityId == "5")
+                        {
+                            <option selected value="5"> 5 - Fatal </option>
+                        }
+                        else
+                        {
+                            <option value="5"> 5 - Fatal </option>
+                        }
                     </select>
                 </div><br />
             </div>
@@ -72,7 +115,14 @@
                     <td><label for="wz">Work Zone:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="wz">
+                            @if (ViewBag.wz == "on")
+                            {
+                                <input type="checkbox" name="wz" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="wz">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -81,7 +131,14 @@
                     <td><label for="pi">Pedestrian:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="pi">
+                            @if (ViewBag.pi == "on")
+                            {
+                                <input type="checkbox" name="pi" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="pi">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -90,7 +147,14 @@
                     <td><label for="bi">Bicyclist:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="bi">
+                            @if (ViewBag.bi == "on")
+                            {
+                                <input type="checkbox" name="bi" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="bi">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -99,7 +163,14 @@
                     <td><label for="mi">Motorcycle:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="mi">
+                            @if (ViewBag.mi == "on")
+                            {
+                                <input type="checkbox" name="mi" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="mi">
+                            }
                             <span class="slider round"></span>
                         </label><br />
                     </td>
@@ -108,7 +179,14 @@
                     <td><label for="ir">Improper Restraints:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="ir">
+                            @if (ViewBag.ir == "on")
+                            {
+                                <input type="checkbox" name="ir" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="ir">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -117,7 +195,14 @@
                     <td><label for="ur">No Restraints:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="ur">
+                            @if (ViewBag.ur == "on")
+                            {
+                                <input type="checkbox" name="ur" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="ur">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -126,7 +211,14 @@
                     <td><label for="DUI">DUI:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="DUI">
+                            @if (ViewBag.DUI == "on")
+                            {
+                                <input type="checkbox" name="DUI" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="DUI">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -135,7 +227,14 @@
                     <td><label for="inRel">Intersection:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="inRel">
+                            @if (ViewBag.inRel == "on")
+                            {
+                                <input type="checkbox" name="inRel" checked />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="inRel">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -144,7 +243,14 @@
                     <td><label for="wiRel">Wild Animal:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="wiRel">
+                            @if (ViewBag.wiRel == "on")
+                            {
+                                <input type="checkbox" name="wiRel" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="wiRel">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -153,7 +259,14 @@
                     <td><label for="overRel">Overturn Rollover:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="overRel">
+                            @if (ViewBag.overRel == "on")
+                            {
+                                <input type="checkbox" name="overRel" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="overRel">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -162,7 +275,14 @@
                     <td><label for="domRel">Domestic Animal:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="domRel">
+                            @if (ViewBag.domRel == "on")
+                            {
+                                <input type="checkbox" name="domRel" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="domRel">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -171,7 +291,14 @@
                     <td><label for="comInv">Commercial Vehicle:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="comInv">
+                            @if (ViewBag.comInv == "on")
+                            {
+                                <input type="checkbox" name="comInv" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="comInv">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -180,7 +307,14 @@
                     <td><label for="oldInv">Driver 55+:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="oldInv">
+                            @if (ViewBag.oldInv == "on")
+                            {
+                                <input type="checkbox" name="oldInv" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="oldInv">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -189,7 +323,14 @@
                     <td><label for="teenInv">Driver Teenager:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="teenInv">
+                            @if (ViewBag.teenInv == "on")
+                            {
+                                <input type="checkbox" name="teenInv" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="teenInv">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -198,7 +339,14 @@
                     <td><label for="ndCond">During Evening:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="ndCond">
+                            @if (ViewBag.ndCond == "on")
+                            {
+                                <input type="checkbox" name="ndCond" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="ndCond">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -207,7 +355,14 @@
                     <td><label for="sinVeh">Single Vehicle:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="sinVeh">
+                            @if (ViewBag.sinVeh == "on")
+                            {
+                                <input type="checkbox" name="sinVeh" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="sinVeh">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -216,7 +371,14 @@
                     <td><label for="disDriv">Distracted Driving:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="disDriv">
+                            @if (ViewBag.disDriv == "on")
+                            {
+                                <input type="checkbox" name="disDriv" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="disDriv">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -225,7 +387,14 @@
                     <td><label for="drowDriv">Drowsy Driving:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="drowDriv">
+                            @if (ViewBag.drowDriv == "on")
+                            {
+                                <input type="checkbox" name="drowDriv" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="drowDriv">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -234,7 +403,14 @@
                     <td><label for="roadDep">Roadway Departure:</label></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="roadDep">
+                            @if (ViewBag.roadDep == "on")
+                            {
+                                <input type="checkbox" name="roadDep" checked>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="roadDep">
+                            }
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -254,7 +430,7 @@
                 if (iCount < 12)
                 {
                     <div class="col-md-6 mb-3">
-                        <div class="card border-warning mb-3 btncolewidth" >
+                        <div class="card border-warning mb-3 btncolewidth">
                             @if (c.CRASH_SEVERITY_ID == "1")
                             {
                                 <div class="bg-success p-1">
@@ -303,7 +479,7 @@
 
                             </div>
 
-                            <button class="btn btn bg-primary bigbtncole" >
+                            <button class="btn btn bg-primary bigbtncole">
                                 <a asp-for="Home" asp-action="Predict" asp-route-crashId="@c.CRASH_ID" asp-route-myCounty="@c.COUNTY_NAME" asp-route-night="@(c.NIGHT_DARK_CONDITION == "true" ? "1": "0")" asp-route-drowsy="@(c.DROWSY_DRIVING == "true" ? "1": "0")" asp-route-distracted="@(c.DISTRACTED_DRIVING == "true" ? "1": "0")" asp-route-old="@(c.OLDER_DRIVER_INVOLVED == "true" ? "1": "0")" asp-route-restraint="@(c.UNRESTRAINED == "true" ? "1": "0")" asp-route-dui="@(c.DUI == "true" ? "1": "0")" asp-route-teens="@(c.TEENAGE_DRIVER_INVOLVED == "true" ? "1": "0")" class="cole">View Details</a>
                             </button>
 
@@ -376,14 +552,19 @@
             }
         </div>
     </div>
+
+    @*Pagination at the bottom of the page*@
+    @if (ViewBag.Submitted == false)
+    {
+        <div page-model="@Model.PageInfo" page-action="DataSummaryGrid" page-class="btn"
+             page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+             class="btn-group pull-right m-1 mb-5">
+        </div>
+    }
 </div>
 
 
 
 
 
-    @*Pagination at the bottom of the page*@
-    <div page-model="@Model.PageInfo" page-action="DataSummaryGrid" page-class="btn"
-         page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
-         class="btn-group pull-right m-1 mb-5">
-    </div>
+ 

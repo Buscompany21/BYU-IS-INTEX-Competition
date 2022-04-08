@@ -203,8 +203,31 @@ namespace INTEX2.Controllers
             return View(yeet);
         }*/
 
-        public IActionResult DataSummaryGrid(string cityName, string countyName, string severityId, string wz, string pi, string bi, string mi, string ir, string ur, string DUI, string inRel, string wiRel, string domRel, string overRel, string comInv, string teenInv, string oldInv, string ndCond, string sinVeh, string disDriv, string drowDriv, string roadDep, string cRASH_SEVERITY_ID, string cOUNTY_NAME, int pageNum = 1)
+        public IActionResult DataSummaryGrid(string cityName, string countyName, string severityId, string wz, string pi, string bi, string mi, string ir, string ur, string DUI, string inRel, string wiRel, string domRel, string overRel, string comInv, string teenInv, string oldInv, string ndCond, string sinVeh, string disDriv, string drowDriv, string roadDep, string cRASH_SEVERITY_ID, string cOUNTY_NAME, int pageNum = 1, bool Submitted = false)
         {
+            ViewBag.cityName = cityName;
+            ViewBag.countyName = countyName;
+            ViewBag.severityId = severityId;
+            ViewBag.roadDep = roadDep;
+            ViewBag.drowDriv = drowDriv;
+            ViewBag.disDriv = disDriv;
+            ViewBag.sinVeh = sinVeh;
+            ViewBag.ndCond = ndCond;
+            ViewBag.oldInv = oldInv;
+            ViewBag.teenInv = teenInv;
+            ViewBag.comInv = comInv;
+            ViewBag.overRel = overRel;
+            ViewBag.domRel = domRel;
+            ViewBag.wiRel = wiRel;
+            ViewBag.inRel = inRel;
+            ViewBag.DUI = DUI;
+            ViewBag.ur = ur;
+            ViewBag.ir = ir;
+            ViewBag.mi = mi;
+            ViewBag.bi = bi;
+            ViewBag.pi = pi;
+            ViewBag.wz = wz;
+            ViewBag.Submitted = Submitted;
             // Get all the parameters passed from the slider checkbox and convert their value from "on" to "true" if they are checked
             if (roadDep == "on")
             {
@@ -282,12 +305,89 @@ namespace INTEX2.Controllers
             {
                 wz = "true";
             }
-            int pageSize = 25;
-
-            var yeet = new CrashesViewModel
+            
+            var yeet = new CrashesViewModel();
+            if(Submitted == true)
             {
-
+                int pageSize = 299;
+                yeet = new CrashesViewModel
+                {
+                    
                 Crashes = _repo.Crashes
+                .Where(p => p.COUNTY_NAME != "")
+                .Where(p => p.COUNTY_NAME == countyName || countyName == null)
+                .Where(p => p.CITY == cityName || cityName == null)
+                .Where(p => p.WORK_ZONE_RELATED == wz || wz == null)
+                .Where(p => p.PEDESTRIAN_INVOLVED == pi || pi == null)
+                .Where(p => p.BICYCLIST_INVOLVED == bi || bi == null)
+                .Where(p => p.MOTORCYCLE_INVOLVED == mi || mi == null)
+                .Where(p => p.IMPROPER_RESTRAINT == ir || ir == null)
+                .Where(p => p.UNRESTRAINED == ur || ur == null)
+                .Where(p => p.DUI == DUI || DUI == null)
+                .Where(p => p.INTERSECTION_RELATED == inRel || inRel == null)
+                .Where(p => p.WORK_ZONE_RELATED == wz || wz == null)
+                .Where(p => p.WILD_ANIMAL_RELATED == wiRel || wiRel == null)
+                .Where(p => p.DOMESTIC_ANIMAL_RELATED == domRel || domRel == null)
+                .Where(p => p.WILD_ANIMAL_RELATED == wiRel || wiRel == null)
+                .Where(p => p.OVERTURN_ROLLOVER == overRel || overRel == null)
+                .Where(p => p.COMMERCIAL_MOTOR_VEH_INVOLVED == comInv || comInv == null)
+                .Where(p => p.TEENAGE_DRIVER_INVOLVED == teenInv || teenInv == null)
+                .Where(p => p.OLDER_DRIVER_INVOLVED == oldInv || oldInv == null)
+                .Where(p => p.NIGHT_DARK_CONDITION == ndCond || ndCond == null)
+                .Where(p => p.SINGLE_VEHICLE == sinVeh || sinVeh == null)
+                .Where(p => p.DISTRACTED_DRIVING == disDriv || disDriv == null)
+                .Where(p => p.DROWSY_DRIVING == drowDriv || drowDriv == null)
+                .Where(p => p.ROADWAY_DEPARTURE == roadDep || roadDep == null)
+                .Where(p => p.CRASH_SEVERITY_ID == severityId || severityId == null)
+
+                .Take(pageSize),
+                    PageInfo = new PageInfo
+                    {
+
+                        TotalNumCrashes =
+                        _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                            .Where(x => x.CITY == cityName || cityName == null)
+                            .Where(x => x.CRASH_SEVERITY_ID == severityId || severityId == null)
+                            .Where(x => x.WORK_ZONE_RELATED == wz || wz == null)
+                            .Where(x => x.PEDESTRIAN_INVOLVED == pi || pi == null)
+                            .Where(x => x.BICYCLIST_INVOLVED == bi || bi == null)
+                            .Where(x => x.MOTORCYCLE_INVOLVED == mi || mi == null)
+                            .Where(x => x.IMPROPER_RESTRAINT == ir || ir == null)
+                            .Where(x => x.UNRESTRAINED == ur || ur == null)
+                            .Where(x => x.DUI == DUI || DUI == null)
+                            .Where(x => x.INTERSECTION_RELATED == inRel || inRel == null)
+                            .Where(x => x.WILD_ANIMAL_RELATED == wiRel || wiRel == null)
+                            .Where(x => x.OVERTURN_ROLLOVER == overRel || overRel == null)
+                            .Where(x => x.DOMESTIC_ANIMAL_RELATED == domRel || domRel == null)
+                            .Where(x => x.COMMERCIAL_MOTOR_VEH_INVOLVED == comInv || comInv == null)
+                            .Where(x => x.OLDER_DRIVER_INVOLVED == oldInv || oldInv == null)
+                            .Where(x => x.TEENAGE_DRIVER_INVOLVED == teenInv || teenInv == null)
+                            .Where(x => x.NIGHT_DARK_CONDITION == ndCond || ndCond == null)
+                            .Where(x => x.SINGLE_VEHICLE == sinVeh || sinVeh == null)
+                            .Where(x => x.DISTRACTED_DRIVING == disDriv || disDriv == null)
+                            .Where(x => x.DROWSY_DRIVING == drowDriv || drowDriv == null)
+                            .Where(x => x.ROADWAY_DEPARTURE == roadDep || roadDep == null).Count(),
+
+                        //TotalNumCrashes =
+                        //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                        //        ? _repo.Crashes.Count()
+                        //        : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                        //        .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+
+
+                        CrashesPerPage = pageSize,
+                        CurrentPage = pageNum
+                    }
+                };
+            }
+            else
+            {
+                int pageSize = 25;
+
+                yeet = new CrashesViewModel
+                {
+
+                    Crashes = _repo.Crashes
                 .Where(p => p.COUNTY_NAME != "")
                 .Where(p => p.COUNTY_NAME == countyName || countyName == null)
                 .Where(p => p.CITY == cityName || cityName == null)
@@ -317,10 +417,10 @@ namespace INTEX2.Controllers
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
-                PageInfo = new PageInfo
-                {
+                    PageInfo = new PageInfo
+                    {
 
-                    TotalNumCrashes =
+                        TotalNumCrashes =
                         _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
                             .Where(x => x.CITY == cityName || cityName == null)
                             .Where(x => x.CRASH_SEVERITY_ID == severityId || severityId == null)
@@ -344,20 +444,21 @@ namespace INTEX2.Controllers
                             .Where(x => x.DROWSY_DRIVING == drowDriv || drowDriv == null)
                             .Where(x => x.ROADWAY_DEPARTURE == roadDep || roadDep == null).Count(),
 
-                    //TotalNumCrashes =
-                    //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
-                    //        ? _repo.Crashes.Count()
-                    //        : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
-                    //        .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
+                        //TotalNumCrashes =
+                        //    (cOUNTY_NAME == null & cRASH_SEVERITY_ID == null
+                        //        ? _repo.Crashes.Count()
+                        //        : _repo.Crashes.Where(x => x.COUNTY_NAME == cOUNTY_NAME || cOUNTY_NAME == null)
+                        //        .Where(x => x.CRASH_SEVERITY_ID == cRASH_SEVERITY_ID || cRASH_SEVERITY_ID == null).Count()),
 
 
-                    CrashesPerPage = pageSize,
-                    CurrentPage = pageNum
-                }
-            };
+                        CrashesPerPage = pageSize,
+                        CurrentPage = pageNum
+                    }
+                };
+            }
+            
             ViewBag.CITY = _repo.Crashes.Where(x => x.CITY != "***  ERROR  ***").Where(x => x.CITY != "").Select(x => x.CITY).Distinct().OrderBy(x => x);
-            ViewBag.COUNTY_NAME = _repo.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x);
-
+            ViewBag.COUNTY_NAME = _repo.Crashes.Where(x => x.COUNTY_NAME != "").Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x);
             return View(yeet);
         }
 
