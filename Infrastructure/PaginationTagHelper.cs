@@ -38,10 +38,10 @@ namespace INTEX2.Infrastructure
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
             IUrlHelper uh = uhf.GetUrlHelper(vc);
-
+            //<button form="theyAreDumb"><a></a></button>
             TagBuilder final = new TagBuilder("div");
             if (PageModel.CurrentPage > 1)
-            {
+            {   
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = 1 });
                 if (PageClassesEnabled)
