@@ -1,7 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Add";
 }
 
 
@@ -9,148 +7,148 @@
 <h2 class="text-center">Enter Crash Data</h2>
 
 <div class="container form-group">
-    
+
 
     <br />
     @*creates a form for user to enter information that will hook up to the database*@
-<form method="post">
-    <div asp-validation-summary="All"></div>
+    <form method="post">
+        <div asp-validation-summary="All"></div>
 
-    
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label asp-for="CRASH_DATETIME">Crash Date and Time</label>
-            <br />
-            <input asp-for="CRASH_DATETIME" type="datetime-local" />
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="CRASH_DATETIME">Crash Date and Time</label>
+                <br />
+                <input asp-for="CRASH_DATETIME" type="datetime-local" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="ROUTE">Route</label>
+                <br />
+                <input asp-for="ROUTE" type="text" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="MILEPOINT">Mile Point:</label>
+                <br />
+                <input asp-for="MILEPOINT" type="text" />
+            </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <label asp-for="ROUTE">Route</label>
-            <br />
-            <input asp-for="ROUTE" type="text" />
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="LAT_UTM_Y">Latitude:</label>
+                <br />
+                <input asp-for="LAT_UTM_Y" type="text" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="LONG_UTM_X">Longitude:</label><br />
+                <input asp-for="LONG_UTM_X" type="text" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="MAIN_ROAD_NAME">Main Road Name:</label><br />
+                <input asp-for="MAIN_ROAD_NAME" type="text" />
+            </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <label asp-for="MILEPOINT">Mile Point:</label>
-            <br />
-            <input asp-for="MILEPOINT" type="text" />
-        </div>
-    </div>
-
-    <div class="form-row">
-
-        <div class="col-md-4 mb-3">
-            <label asp-for="LAT_UTM_Y">Latitude:</label>
-            <br />
-            <input asp-for="LAT_UTM_Y" type="text" />
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <label asp-for="LONG_UTM_X">Longitude:</label><br />
-            <input asp-for="LONG_UTM_X" type="text" />
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <label asp-for="MAIN_ROAD_NAME">Main Road Name:</label><br />
-            <input asp-for="MAIN_ROAD_NAME" type="text" />
-        </div>
-
-    </div>
-
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label>City</label><br />
-            <select asp-for="CITY">
-                <option disabled selected value=""> -- select an option -- </option>
-                @foreach (string c in ViewBag.CITY)
-                {
-                    @if ((@c != "") || (@c != "***  ERROR  ***"))
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>City</label><br />
+                <select asp-for="CITY">
+                    <option disabled selected value=""> -- select an option -- </option>
+                    @foreach (string c in ViewBag.CITY)
                     {
-                        <option value="@c">@c</option>
+                        @if ((@c != "") || (@c != "***  ERROR  ***"))
+                        {
+                            <option value="@c">@c</option>
+                        }
                     }
-                }
-            </select>
-        </div>
+                </select>
+            </div>
 
-        <div class="col-md-4 mb-3">
-            <label>County</label><br />
-            <select asp-for="COUNTY_NAME">
-                <option disabled selected value=""> -- select an option -- </option>
-                @foreach (string c in ViewBag.COUNTY_NAME)
-                {
-                    @if (@c != "")
+            <div class="col-md-4 mb-3">
+                <label>County</label><br />
+                <select asp-for="COUNTY_NAME">
+                    <option disabled selected value=""> -- select an option -- </option>
+                    @foreach (string c in ViewBag.COUNTY_NAME)
                     {
-                        <option value="@c">@c</option>
+                        @if (@c != "")
+                        {
+                            <option value="@c">@c</option>
+                        }
+
                     }
+                </select>
+            </div>
 
-                }
-            </select>
-        </div>
+            <div class="col-md-4 mb-3">
+                <label>Crash Severity:</label><br />
+                <select asp-for="CRASH_SEVERITY_ID">
+                    <option disabled selected value=""> -- select an option -- </option>
+                    <option value="1"> No Injury </option>
+                    <option value="2"> Possible Injury </option>
+                    <option value="3"> Suspected Minor Injury </option>
+                    <option value="4"> Suspected Serious Injury </option>
+                    <option value="5"> Fatal </option>
 
-        <div class="col-md-4 mb-3">
-            <label>Crash Severity:</label><br />
-            <select asp-for="CRASH_SEVERITY_ID">
-                <option disabled selected value=""> -- select an option -- </option>
-                <option value="1"> No Injury </option>
-                <option value="2"> Possible Injury </option>
-                <option value="3"> Suspected Minor Injury </option>
-                <option value="4"> Suspected Serious Injury </option>
-                <option value="5"> Fatal </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Crash Occured In Work Zone?:</label><br />
+                <input type="radio" asp-for="WORK_ZONE_RELATED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="WORK_ZONE_RELATED" value="false">
+                <label>No</label>
+            </div>
 
-            </select>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label>Crash Occured In Work Zone?:</label><br />
-            <input type="radio" asp-for="WORK_ZONE_RELATED" value="true">
-            <label>Yes</label><br>
-            <input type="radio" asp-for="WORK_ZONE_RELATED" value="false">
-            <label>No</label>
-        </div>
+            <div class="col-md-4 mb-3">
+                <label>Pedestrian Involved In Crash?:</label><br />
+                <input type="radio" asp-for="PEDESTRIAN_INVOLVED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="PEDESTRIAN_INVOLVED" value="false">
+                <label>No</label>
+            </div>
 
-        <div class="col-md-4 mb-3">
-            <label>Pedestrian Involved In Crash?:</label><br />
-            <input type="radio" asp-for="PEDESTRIAN_INVOLVED" value="true">
-            <label>Yes</label><br>
-            <input type="radio" asp-for="PEDESTRIAN_INVOLVED" value="false">
-            <label>No</label>
+            <div class="col-md-4 mb-3">
+                <label>Bicyclist Involved In Crash?:</label><br />
+                <input type="radio" asp-for="BICYCLIST_INVOLVED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="BICYCLIST_INVOLVED" value="false">
+                <label>No</label>
+            </div>
         </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Motorcycle Involved In Crash?:</label><br />
+                <input type="radio" asp-for="MOTORCYCLE_INVOLVED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="MOTORCYCLE_INVOLVED" value="false">
+                <label>No</label>
+            </div>
 
-        <div class="col-md-4 mb-3">
-            <label>Bicyclist Involved In Crash?:</label><br />
-            <input type="radio" asp-for="BICYCLIST_INVOLVED" value="true">
-            <label>Yes</label><br>
-            <input type="radio" asp-for="BICYCLIST_INVOLVED" value="false">
-            <label>No</label>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label>Motorcycle Involved In Crash?:</label><br />
-            <input type="radio" asp-for="MOTORCYCLE_INVOLVED" value="true">
-            <label>Yes</label><br>
-            <input type="radio" asp-for="MOTORCYCLE_INVOLVED" value="false">
-            <label>No</label>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <label>Did Drivers/Passengers Have Improper Restraints?:</label><br />
-            <input type="radio" asp-for="IMPROPER_RESTRAINT" value="true">
-            <label>Yes</label><br>
-            <input type="radio" asp-for="IMPROPER_RESTRAINT" value="false">
-            <label>No</label>
-        </div>
+            <div class="col-md-4 mb-3">
+                <label>Did Drivers/Passengers Have Improper Restraints?:</label><br />
+                <input type="radio" asp-for="IMPROPER_RESTRAINT" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="IMPROPER_RESTRAINT" value="false">
+                <label>No</label>
+            </div>
 
 
-        <div class="col-md-4 mb-3">
-            <label>Did Drivers/Passengers Have No Restraints?:</label><br />
-            <input type="radio" asp-for="UNRESTRAINED" value="true">
-            <label>Yes</label><br>
-            <input type="radio" asp-for="UNRESTRAINED" value="false">
-            <label>No</label>
+            <div class="col-md-4 mb-3">
+                <label>Did Drivers/Passengers Have No Restraints?:</label><br />
+                <input type="radio" asp-for="UNRESTRAINED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="UNRESTRAINED" value="false">
+                <label>No</label>
+            </div>
         </div>
-    </div>
         <div class="form-row">
 
             <div class="col-md-4 mb-3">
@@ -179,101 +177,101 @@
                 <label>No</label>
             </div>
         </div>
-            <div class="form-row">
+        <div class="form-row">
 
-                <div class="col-md-4 mb-3">
-                    <label>Crash Occured From Domestic Animal?:</label><br />
-                    <input type="radio" asp-for="DOMESTIC_ANIMAL_RELATED" value="true">
-                    <label>Yes</label><br>
-                    <input type="radio" asp-for="DOMESTIC_ANIMAL_RELATED" value="false">
-                    <label>No</label>
-                </div>
-
-
-                <div class="col-md-4 mb-3">
-                    <label>Crash Involved An Overturn Rollover?:</label><br />
-                    <input type="radio" asp-for="OVERTURN_ROLLOVER" value="true">
-                    <label>Yes</label><br>
-                    <input type="radio" asp-for="OVERTURN_ROLLOVER" value="false">
-                    <label>No</label>
-                </div>
-
-
-                <div class="col-md-4 mb-3">
-                    <label>Crash Involved A Commercial Vehicle?:</label><br />
-                    <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="true">
-                    <label>Yes</label><br>
-                    <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="false">
-                    <label>No</label>
-                </div>
+            <div class="col-md-4 mb-3">
+                <label>Crash Occured From Domestic Animal?:</label><br />
+                <input type="radio" asp-for="DOMESTIC_ANIMAL_RELATED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="DOMESTIC_ANIMAL_RELATED" value="false">
+                <label>No</label>
             </div>
 
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label>Driver(s) Involved Was/Were Teenager(s)?:</label><br />
-                        <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="true">
-                        <label>Yes</label><br>
-                        <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="false">
-                        <label>No</label>
-                    </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Crash Involved An Overturn Rollover?:</label><br />
+                <input type="radio" asp-for="OVERTURN_ROLLOVER" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="OVERTURN_ROLLOVER" value="false">
+                <label>No</label>
+            </div>
 
 
-                    <div class="col-md-4 mb-3">
-                        <label>Driver(s) Involved Was/Were 55+?:</label><br />
-                        <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="true">
-                        <label>Yes</label><br>
-                        <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="false">
-                        <label>No</label>
-                    </div>
+            <div class="col-md-4 mb-3">
+                <label>Crash Involved A Commercial Vehicle?:</label><br />
+                <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="false">
+                <label>No</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Driver(s) Involved Was/Were Teenager(s)?:</label><br />
+                <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="false">
+                <label>No</label>
+            </div>
 
 
-                    <div class="col-md-4 mb-3">
-                        <label>Crash Occured During The Evening?:</label><br />
-                        <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="true">
-                        <label>Yes</label><br>
-                        <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="false">
-                        <label>No</label>
-                    </div>
-                </div>
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <label>Crash Involved Only A Single Vehicle?:</label><br />
-                            <input type="radio" asp-for="SINGLE_VEHICLE" value="true">
-                            <label>Yes</label><br>
-                            <input type="radio" asp-for="SINGLE_VEHICLE" value="false">
-                            <label>No</label>
-                        </div>
+            <div class="col-md-4 mb-3">
+                <label>Driver(s) Involved Was/Were 55+?:</label><br />
+                <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="false">
+                <label>No</label>
+            </div>
 
 
-                        <div class="col-md-4 mb-3">
-                            <label>Crash Occured Due To Distracted Driving?:</label><br />
-                            <input type="radio" asp-for="DISTRACTED_DRIVING" value="true">
-                            <label>Yes</label><br>
-                            <input type="radio" asp-for="DISTRACTED_DRIVING" value="false">
-                            <label>No</label>
-                        </div>
+            <div class="col-md-4 mb-3">
+                <label>Crash Occured During The Evening?:</label><br />
+                <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="false">
+                <label>No</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Crash Involved Only A Single Vehicle?:</label><br />
+                <input type="radio" asp-for="SINGLE_VEHICLE" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="SINGLE_VEHICLE" value="false">
+                <label>No</label>
+            </div>
 
 
-                        <div class="col-md-4 mb-3">
-                            <label>Crash Occured Due To Drowsy Driving?:</label><br />
-                            <input type="radio" asp-for="DROWSY_DRIVING" value="true">
-                            <label>Yes</label><br>
-                            <input type="radio" asp-for="DROWSY_DRIVING" value="false">
-                            <label>No</label>
-                        </div>
-                    </div>
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <label>Crash Occured On A Roadway Departure?:</label><br />
-                                <input type="radio" asp-for="ROADWAY_DEPARTURE" value="true">
-                                <label>Yes</label><br>
-                                <input type="radio" asp-for="ROADWAY_DEPARTURE" value="false">
-                                <label>No</label>
-                            </div>
-                        </div>
-
-                            <button type="submit">Submit Crash Data</button>
+            <div class="col-md-4 mb-3">
+                <label>Crash Occured Due To Distracted Driving?:</label><br />
+                <input type="radio" asp-for="DISTRACTED_DRIVING" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="DISTRACTED_DRIVING" value="false">
+                <label>No</label>
+            </div>
 
 
-</form>
+            <div class="col-md-4 mb-3">
+                <label>Crash Occured Due To Drowsy Driving?:</label><br />
+                <input type="radio" asp-for="DROWSY_DRIVING" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="DROWSY_DRIVING" value="false">
+                <label>No</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Crash Occured On A Roadway Departure?:</label><br />
+                <input type="radio" asp-for="ROADWAY_DEPARTURE" value="true">
+                <label>Yes</label><br>
+                <input type="radio" asp-for="ROADWAY_DEPARTURE" value="false">
+                <label>No</label>
+            </div>
+        </div>
+
+        <button type="submit">Submit Crash Data</button>
+
+
+    </form>
 </div>
