@@ -2,14 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-
 <head>
     <link href="~/css/metro-all.min.css" rel="stylesheet" />
+    <link href="~/css/site - Copy.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -18,127 +13,85 @@
             data-auto-block="on"
             data-website-uuid="bd768242-0caf-4596-be95-3d56795fa394"></script>
 
-    <style>
-        .container1 {
-            position: relative;
-            width: 100%;
-        }
-
-        /* blurring the image */
-        .gfg {
-            filter: blur(5px);
-            width: 100%;
-        }
-
-        .gfg2 {
-            width: 100%;
-        }
-
-        /* designing title and tag line */
-
-
-        .logo {
-            text-align: center;
-            max-width: 35%;
-            position: absolute;
-            font-size: 20px;
-            top: 35%;
-            left: 35%;
-            color: white;
-        }
-
-        .logo2 {
-            text-align: center;
-            position: absolute;
-            max-width: 100%;
-            font-size: 20px;
-            top: 0%;
-            left: 0%;
-            color: black;
-        }
-
-        h1, p {
-            border: 4px solid white;
-            padding: 10px 50px;
-            position: relative;
-            border-radius: 10px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .background {
-            background-color: black;
-        }
-
-        h1:hover {
-            /*background-color: red;*/
-            /*-webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;*/
-        }
-
-        /* Designing button */
-        .logo button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 10px 25px;
-            color: black;
-            background-color: #ddd;
-            text-align: center;
-            cursor: pointer
-        }
-
-            .logo button:hover {
-                background-color: red;
-                color: white;
-            }
-
-        .logo2 button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 10px 25px;
-            color: black;
-            background-color: #ddd;
-            text-align: center;
-            cursor: pointer
-        }
-
-            .logo2 button:hover {
-                background-color: red;
-                color: white;
-            }
-        /*#my-div {
-            margin: 0 auto;
-            width: 80%;
-            height: 50%;
-        }*/
-
-    </style>
-
+    
     <div class="container">
+        <img class="gfg" src="~/img/nighthighway3.jpg" />
+        <div>
+            test
+        </div>
+    </div>
+
+    <!--<div class="container">
         <div class="row">
-            <div class="container1 containertest">
+            <div class="container">
 
-                <img class="gfg " src="~/img/nighthighway3.jpg" />
+                <img class="gfg " src="~/img/nighthighway3.jpg" />-->
                 <!-- title and tag line with button -->
-                <div class="logo">
+                
+                <!--<div class="logo fadeshow1">
+                    <div class="background stuff">
 
-                    <h1 class="background">Utah Crash Data</h1>
+                        <h1>Utah Crash and Accident Repository(U-C.A.R.)</h1>
 
 
-                    <p class="background">Driving Understanding and Prevention</p>
+                        <p>Information lead to Innovation</p>
 
-
-                    <button>See the Data</button>
+                    </div>
+                    <button class="background">See the Data</button>
                 </div>
+
+               
             </div>
 
-        </div>
+        </div>-->
 
         <!-- background image -->
 
+        <!--<br /><br />
         <br /><br />
-        <br /><br />
+    </div>-->
+
+    <div class="container text-center">
+
+        <div class="text-center">
+            <h1>For Users</h1>
+        </div>
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-6">
+                <h4>
+                    The Utah Department of Transportation, concerned lawmakers, and advocates have noticed the
+                    alarming increase of motor vehicle accidents and deaths in Utah.
+                </h4>
+                <br />
+                <h4>
+                    Zero Fatalities is the Only Acceptable Number
+                </h4>
+                <p>
+                     - Zero Fatalities Mission Statement
+                </p>
+                <br />
+                <br />
+            </div>
+            <div class="col-6">
+
+                <h4>
+                    To combat this trend we have created this website using actual Utah crash data to empower
+                    users to better understand and work toward crash and fatality prevention.
+                </h4>
+                <br />
+                <h4>
+                    Enhance quality of life through transportation
+                </h4>
+                <p>
+                     - UDOT Mission Statement
+                </p>
+                <br />
+                <br />
+            </div>
+        </div>
     </div>
 
     <div class="container">
@@ -151,7 +104,7 @@
         <div class="row">
             <div class="col">
                 <div class="card image-header">
-                    <div class="card-header fg-white" style="background-image: url(https://zerofatalities.com/wp-content/uploads/2020/11/zero-logo@2x-8.png)">
+                    <div class="card-header fg-white willy">
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-secondary" onclick="location.href='https://zerofatalities.com/'" type="button">
@@ -162,7 +115,8 @@
             </div>
             <div class="col">
                 <div class="card image-header">
-                    <div class="card-header fg-white" style="background-image: url(https://pbs.twimg.com/media/EhC9XQOWoAAP5KM.jpg)">
+                    <div class="card-header fg-white willseph">
+
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-secondary" onclick="location.href='https://highwaysafety.utah.gov/crash-data/'" type="button">
@@ -173,63 +127,20 @@
             </div>
             <div class="col">
                 <div class="card image-header">
-                    <div class="card-header fg-white" style="background-image: url(https://pbs.twimg.com/profile_images/568447784525647872/kQ_uH5TR_400x400.jpeg)">
+                    <div class="card-header fg-white will">
 
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-secondary" onclick="location.href='https://saferoads.org/'" type="button">
                             Advocates for Highway...
                         </button>
-                        @*<button class="button secondary" href="" target="_blank">Advocates for Highway...</button>*@
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--<div class="col-8">
-    <div class="container1">
-
-        <img class="gfg2" src="~/img/lehi2.jpeg" />-->
-    <!-- title and tag line with button -->
-    <!--</div>
-    </div>
-    <div class="col-4">
-        <p>
-            The Utah Department of Transportation, concerned lawmakers, and advocates have noticed the
-            alarming increase of motor vehicle accidents and deaths in Utah.
-            We aim to empower public servants and concerned citizens throughout the state of Utah to be
-            better informed about how to make our streets, highways, and freeways safer.
-        </p>
-        <div class="text-center"><button class="btn btn-secondary">Crash Severity Trends</button></div>
-    </div>
-              </div>-->
 
     <br /><br /><br /><br />
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-@*<div class="tiles-grid">
-        <div data-role="tile" data-size="small"></div>
-        <div data-role="tile" data-size="small"></div>
-        <div data-role="tile" data-size="small" class="col-1 row-2"></div>
-        <div data-role="tile" data-size="small" class="col-2 row-2"></div>
-        <div data-role="tile" data-size="medium"></div>
-        <div data-role="tile" data-size="wide"></div>
-        <div data-role="tile" data-size="large"></div>
-        <div data-role="tile" data-size="medium"></div>
-        <div data-role="tile" data-size="medium"></div>
-        <div data-role="tile" data-size="wide"></div>
-    </div>*@
-
-
-

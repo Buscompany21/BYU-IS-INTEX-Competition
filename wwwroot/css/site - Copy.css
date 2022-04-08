@@ -90,3 +90,185 @@ input:checked + .slider:before {
 .floatInputs{
     float: right;
 }
+
+.will {
+    background-image: url(../img/other.jpeg);
+}
+
+.willy {
+    background-image: url(../img/zerofatalities.png);
+}
+
+.willseph {
+    background-image: url(../img/DPS.jpg);
+}
+
+
+.container1 {
+    position: relative;
+    width: 100%;
+}
+
+/* blurring the image */
+.gfg {
+    filter: blur(5px);
+    width: 100%;
+}
+
+.gfg2 {
+    width: 100%;
+}
+
+/* designing title and tag line */
+
+
+
+.logo {
+    text-align: center;
+    max-width: 35%;
+    position: absolute;
+    font-size: 20px;
+    top: 15%;
+    left: 35%;
+    color: white;
+}
+
+.logo2 {
+    text-align: center;
+    position: absolute;
+    max-width: 100%;
+    font-size: 20px;
+    top: 0%;
+    left: 0%;
+    color: black;
+}
+
+h1, p {
+
+    padding: 10px 50px;
+    position: relative;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.background {
+    background-color: black;
+}
+
+h1:hover {
+    /*background-color: red;*/
+    /*-webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;*/
+}
+
+/* Designing button */
+.logo button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer
+}
+
+    .logo button:hover {
+        background-color: red;
+        color: white;
+    }
+
+.logo2 button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer
+}
+
+    .logo2 button:hover {
+        background-color: red;
+        color: white;
+    }
+/*#my-div {
+            margin: 0 auto;
+            width: 80%;
+            height: 50%;
+        }*/
+
+/*@media (min-width:576px) {
+    .container2 {
+        max-width: 540px
+    }
+
+    .container2 .stuff {
+        max-width: 10%
+    }
+}
+
+@media (min-width:768px) {
+    .container2 {
+        max-width: 720px
+    }
+    .stuff{
+        max-width: 25%
+    }
+}
+
+@media (min-width:992px) {
+    .container2 {
+        max-width: 960px
+        
+    }
+    .container2 .stuff{
+        max-width: 50%
+    }
+}
+
+@media (min-width:1200px) {
+    .container2 {
+        max-width: 1140px
+    }
+    .container2 .stuff {
+        max-width: 75%
+    }
+}
+
+@media (min-width:1452px) {
+    .container2 {
+        max-width: 1360px
+    }
+    .container2 .stuff{
+        max-width: 90%
+    }
+}*/
+
+@media only screen and (max-width: 1400px) {
+    .fadeshow1 {
+        left: 40%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .fadeshow1 {
+        left: 35%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .fadeshow1 {
+        left: 35%;
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .fadeshow1 {
+        left: 35%;
+        display: none;
+    }
+}
+
