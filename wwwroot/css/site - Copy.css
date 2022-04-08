@@ -1,6 +1,9 @@
 ﻿.cole{
     color: white;
 }
+.coleb {
+    color: black;
+}
 
 .btncolewidth{
     max-width:30rem;
@@ -9,6 +12,11 @@
 .bigbtncole {
     margin-left: 125px;
     margin-right: 125px;
+}
+
+.medbtncole {
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .briguysize {
@@ -245,7 +253,7 @@ h1:hover {
         max-width: 90%
     }
 }*/
-
+/*
 @media only screen and (max-width: 1400px) {
     .fadeshow1 {
         left: 40%;
@@ -271,4 +279,4 @@ h1:hover {
         display: none;
     }
 }
-
+*/
