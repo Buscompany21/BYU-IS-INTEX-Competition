@@ -1,4 +1,4 @@
-# INTEX2
+# BYU Information Systems INTEX Competition
 Brigham Young University Information Systems competition. Team of 4 given 4 days to
 complete the competition. 
 
