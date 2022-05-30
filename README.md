@@ -6,4 +6,4 @@ Crash severity calculator and web application accessing over 250,000 Utah car in
 that predict severity scores to advise drivers of danger and emergency services of
 potential responses.
 
-Predictor model written in Python. ASP.Net Web application with Bootstrap
+Predictor model written in Python. ASP.Net Web application, connected to MySQL database, and styled with bootstrap.
